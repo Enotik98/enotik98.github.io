@@ -1,11 +1,13 @@
 body{
     margin: 0;
+    padding: 0;
     background-color: #ffffff;
     font-size: 14pt;
     font-family: 'PT Sans', sans-serif;
     font-variant-ligatures: normal;
     line-height: 22px;
-
+    min-height: 100vh;
+    position: relative;
 }
 *,
 :after,
@@ -23,6 +25,7 @@ body{
 
 /* Header */
 .header{
+    top: 0;
     width: 100%;
     background-color: #FFECF3;
 }
@@ -30,13 +33,13 @@ body{
 .header_inner{
 
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
-    height: 230px;
+    min-height: 230px;
 
 }
 .header_logo{
     margin: auto 0;
-    display: flex;
     width: 270px;
     height: 130px;
 
@@ -47,6 +50,8 @@ body{
     margin: auto 0;
     font-size: 30px;
     font-weight: bold;
+    min-width: 280px;
+
     color: #ffbd02;
     text-shadow: 1px 1px 3px #767676;
 }
@@ -70,7 +75,7 @@ body{
 .nav-menu{
     font-size: 20pt;
     text-transform: uppercase;
-    margin: auto;
+    margin: auto ;
 
 
 }
@@ -114,11 +119,11 @@ body{
 
 /* Content */
 .content{
-    position: relative;
+    padding: 0 0 25rem;
 
-    padding: 0;
-    margin: 30px 0 200px;
+    margin: 30px 0 0;
     width: 100%;
+
 
 }
 #content_container{
@@ -130,8 +135,7 @@ body{
     background-color: #ff54a4;
     display: inline-block;
     width: 300px;
-    /*margin: 0 60px 0 0;*/
-    padding: 20px 35px 40px 35px;
+    padding: 20px 35px 0 35px;
 
     color: #ffffff;
     text-shadow: 1px 1px 2px #767676;
@@ -156,7 +160,7 @@ body{
     display: inline-block;
     float: left;
     max-width: 500px;
-    padding: 20px 5px 40px 5px;
+    padding: 20px 5px 0 5px;
     height: auto;
 }
 
@@ -168,10 +172,11 @@ body{
 
 /* Footer */
 .footer{
-    display: flex;
-    margin: 0;
+    position: absolute;
+
     bottom: 0;
     width: 100%;
+    min-height: 200px;
     background-color: rgba(255,233,241,0.8);
     color: #ffbd02;
     text-shadow: 1px 1px 2px #767676;

@@ -1,0 +1,58 @@
+.content-price_list{
+    padding: 0 0 12rem;
+    margin: 0 0 0;
+    width: 100%;
+}
+
+h2{
+    margin: 80px 0 50px;
+    text-align: center;
+
+    font-family: 'Cookie', cursive;
+    font-size: 90pt;
+    color: #612D62;
+    text-shadow: 5px 3px 4px #767676;
+    line-height: initial;
+
+}
+.price_list-items{
+    font-family: 'Caveat', cursive;
+    line-height: 32px;
+    font-size: 22pt;
+    display: flex;
+    flex-wrap: wrap;
+    color: #612D62;
+    justify-content: space-around;
+}
+
+.left-block, .right-block{
+    float: left;
+    width: 45%;
+}
+.left-top-block, .right-top-block, .left-bottom-block, .right-bottom-block{
+    margin: 20px 0 0;
+    box-shadow: 10px 5px 5px grey;
+}
+.left-title, .right-title{
+    background-color: #ff54a4;
+    color: white;
+    line-height: 40px;
+    text-indent: 10px;
+}
+.right-text, .left-text{
+
+    display: flex;
+    justify-content: space-between;
+    font-size: 20pt;
+}
+
+.left, .right{
+    display: inline-grid;
+    padding: 0 10px 0 0;
+    overflow: auto;
+}
+
+.photo img{
+    display: block;
+    margin: 100px auto;
+}
