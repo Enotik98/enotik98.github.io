@@ -76,7 +76,17 @@ body{
     font-size: 20pt;
     text-transform: uppercase;
     margin: auto ;
+    list-style-type: none;
+    display: flex;
+    justify-items: center;
 
+
+}
+.nav-menu li{
+    padding: 0 10px;
+}
+.nav-menu li:not(:last-child){
+    border-right: 3px solid white;
 
 }
 .nav_menu_link {
@@ -194,9 +204,12 @@ body{
     margin: 0;
 }
 .nav-footer {
-    display: grid;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
     width: 200px;
 }
+
 .nav_footer_link{
      color: #ffbd02;
 

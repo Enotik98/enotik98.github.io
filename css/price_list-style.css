@@ -27,7 +27,7 @@ h2{
 
 .left-block, .right-block{
     float: left;
-    width: 45%;
+    width: 450px;
 }
 .left-top-block, .right-top-block, .left-bottom-block, .right-bottom-block{
     margin: 20px 0 0;
@@ -49,7 +49,7 @@ h2{
 .left, .right{
     display: inline-grid;
     padding: 0 10px 0 0;
-    overflow: auto;
+    /*overflow: auto;*/
 }
 
 .photo img{
