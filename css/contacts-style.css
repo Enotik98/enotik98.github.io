@@ -9,12 +9,21 @@
     line-height: 22pt;
     text-indent: 10px;
 }
-.title{
+.title {
     color: white;
     background-color: #ff54a4;
+}
+
+.contacts_address{
+    display: flex;
+    justify-content: space-between;
 
 }
-.instagram{
-    color: #612D62;
-    /*text-decoration: none;*/
+.address{
+    margin: 0;
+
+}
+.map{
+    border: 7px solid #ff54a4;
+    margin: 0 20px 0 0;
 }
