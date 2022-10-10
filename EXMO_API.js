@@ -256,8 +256,8 @@ function print (mainCoin, withCoin, arrResult, arr){
         if (arrResult[k] >= 1) {
             let p1 = document.createElement('p');
             if (arrResult[k] <= 5) {
-                if (arrResult[k] >= 1.003) p1.style.background = 'red';
-                p1.style.background = 'yellow';
+                if (arrResult[k] >= 1.003) p1.style.background = 'lightcoral';
+                else p1.style.background = 'yellow';
             }
             p1.innerText += (arr[k] + " -> " + arrResult[k] + '\n');
             p1.innerText += (arr[k] + " -> " + arrResult[k] * 0.003 + '\n');
