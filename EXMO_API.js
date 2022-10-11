@@ -253,7 +253,7 @@ function print (mainCoin, withCoin, arrResult, arr){
     parent.append(p);
 
     for (let k = 0; k < arrResult.length; k++) {
-        if (arrResult[k] >= 1) {
+        if (arrResult[k] >= 1 && arr[k].split('_')[0] !== "PLCU" && arr[k].split('_')[0] !== "SHIB") {
             let p1 = document.createElement('p');
             if (arrResult[k] <= 5) {
                 if (arrResult[k] >= 1.003) p1.style.background = 'lightcoral';
