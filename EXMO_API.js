@@ -32,8 +32,8 @@ let arr = $.ajax(settings).done(function (response) {
             arrUSD.push(arrKey[k]);
         }
     }
-    console.log(arrUSD);
-    console.log(arrUSDT);
+    // console.log(arrUSD);
+    // console.log(arrUSDT);
 
 
     calc_buyCoin_sellCoinToMain_sellMainUSDT(response, JSON.parse(JSON.stringify(arrUSDT)), arrKey, 'BTC');
@@ -85,7 +85,7 @@ function calc_buyCoin_buyMain_sellUSDT(response, arrUSDT, arrKey, mainCoin){
             k--;
         }
     }
-    console.log(arrUSDT);
+    // console.log(arrUSDT);
     let arrResult = []
     let coin_USDT = mainCoin + '_USDT';
     for (let k = 0; k < arrUSDT.length; k++) {
@@ -115,7 +115,7 @@ function calc_buyCoin_sellToMain_buyUSDT (response, arrUSDT, arrKey, mainCoin){
             k--;
         }
     }
-    console.log(arr);
+    // console.log(arr);
     let arrResult = []
     let USDT_mainCoin = 'USDT_' + mainCoin ;
     for (let k = 0; k < arrUSDT.length; k++) {
@@ -150,7 +150,7 @@ function calc_buyCoin_buyMain_sellUSD (response, arrUSD, arrKey, mainCoin){
             k--;
         }
     }
-    console.log(arrUSD);
+    // console.log(arrUSD);
     let arrResult = []
     let coin_USDT = mainCoin + '_USD';
     for (let k = 0; k < arrUSD.length; k++) {
@@ -225,7 +225,7 @@ function calc_buyCoin_sellCoinToMain_sellMainUSDT (response , arrUSDT, arrKey, m
             k--;
         }
     }
-    console.log(arrUSDT);
+    // console.log(arrUSDT);
     let arrResult = []
     let coin_USDT = mainCoin + '_USDT';
     for (let k = 0; k < arrUSDT.length; k++) {
@@ -265,6 +265,6 @@ function print (mainCoin, withCoin, arrResult, arr){
         }
     }
 }
-setTimeout(function() {
-    location.reload();
-}, 30000);
+// setTimeout(function() {
+//     location.reload();
+// }, 30000);
