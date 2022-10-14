@@ -34,7 +34,7 @@ $.ajax(setting1).done(function (response) {
             usdt++;
         }
         if (arrKey[i]['quoteAsset'] === 'BUSD' && arrKey[i]['status'] !== "BREAK") {
-            arrUSDT[usd] = arrKey[i];
+            arrUSD[usd] = arrKey[i];
             usd++;
         }
     }
