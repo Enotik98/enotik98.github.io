@@ -19,167 +19,133 @@ let setting1 = {
         "Content-Type": "application/x-www-form-urlencoded",
     },
 };
-let price = [];
+// let price = [];
 
-function wait(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
-}
-
-//
-// function getPrice(coin) {
-//
-//     $.ajax({
-//         "url": "https://api3.binance.com/api/v3/ticker/price
-//         "method": "GET",
-//         "timeout": 0,
-//         "headers": {
-//             "Content-Type": "application/x-www-form-urlencoded",
-//         }
-//     }).done(function (response) {
-//         console.log(response)
-//         price = response['price']
-//         return price
-//     })
-//
-//
-// }
-
-// let a = $.ajax(setting).done(function (response) {
-//     // console.log(response);
-//
-//     // let def = $.Deferred()
-//     price = response;
-//     return response
-//     // let a = Object.assign({},response);
-//     // console.log(a)
-// });
-let b, k = [];
-// getPrice("ADABTC");
 $.ajax(setting1).done(function (response) {
 
     let arrKey = response['symbols'];
-
-    console.log(response)
-
+    console.log(arrKey);
     let arrUSDT = [];
     let arrUSD = [];
     let usdt = 0, usd = 0;
     for (let i = 0; i < arrKey.length; i++) {
-        if (arrKey[i]['quoteAsset'] === 'USDT') {
+        if (arrKey[i]['quoteAsset'] === 'USDT' && arrKey[i]['status'] !== "BREAK") {
             arrUSDT[usdt] = arrKey[i];
             usdt++;
         }
-        if (arrKey[i]['quoteAsset'] === 'USD') {
+        if (arrKey[i]['quoteAsset'] === 'BUSD' && arrKey[i]['status'] !== "BREAK") {
             arrUSDT[usd] = arrKey[i];
             usd++;
         }
     }
-
-    // arrUSDT.splice(1, 1);
-
+    let pr;
     $.ajax(setting).done(function (response) {
-
-        price = response;
-
-        let pr = [];
         pr = response;
-
         // console.log(pr)
+        pr = pr.reduce(function (arr, val) {
+            arr[val.symbol] = {"price": val.price};
+            return arr
+        }, {});
 
-        // setTimeout(function () {
-        cal_buy_sell_sell((JSON.parse(JSON.stringify(arrUSDT))), arrKey, 'BTC', pr);
-        // }, 1000);
+        arrKey = arrKey.reduce(function (arr, val) {
+            arr[`${val.baseAsset}_${val.quoteAsset}`] = {...val, ...pr[val.symbol]};
+
+            return arr
+        }, {});
+
+        buy_sell_sell_USDT(arrKey, arrUSDT, 'BTC');
+        buy_sell_sell_USDT(arrKey, arrUSDT, 'ETH');
+        buy_sell_sell_USDT(arrKey, arrUSDT, 'EUR');
+        buy_sell_sell_USDT(arrKey, arrUSDT, 'GBP');
     });
 
 });
 
-function getPrice(coin, pr) {
-    // console.log(pr)
-    for (let i = 0; i < price.length; i++) {
-        if (coin === price[i]['symbol']) {
-            return price[i]['price']
-        }
-    }
-    return 0
-    // debugger
-    // let i = price.find(el => el['symbol'] === coin)
-    // console.log(i)
-    // return price[i]['price']
-
-}
-
-function cal_buy_sell_sell(arrUSDT, arrKey, mainCoin, arrPrice) {
-
-    let parent = document.querySelector('#parent2');
-    let p = document.createElement('p');
-
-    p.innerText =  'USDT with ' + mainCoin+'\n';
-    parent.append(p);
-    let prMainCoin = getPrice(mainCoin + 'USDT', (JSON.parse(JSON.stringify(arrPrice))));
+function buy_sell_sell_USDT(arrKey, arrUSDT, mainCoin) {
+    addP("USDT", mainCoin);
     let arrResult = [];
-    for (let i = 0; i < arrUSDT.length; i++) {
-        if (arrUSDT[i]['baseAsset'] === mainCoin) {
-            continue;
-        }
-        // let usdt = 0;
-        let find = false;
-        for (let usdt = 0; usdt < arrKey.length; usdt++) {
-            if (arrUSDT[i]['baseAsset'] !== arrKey[usdt]['baseAsset'] && arrKey[usdt]['quotesAsset'] !== mainCoin) {
-                find = false;
-            } else {
-                find = true;
-                break;
+    // debugger
+    let pr_Main_USDT
+        if (arrKey[mainCoin + '_USDT']){
+            pr_Main_USDT = arrKey[mainCoin + '_USDT']['price'];
+        }else {
+            if (arrKey['USDT_'+mainCoin]){
+                pr_Main_USDT = arrKey['USDT_'+mainCoin]['price'];
+            }else {
+                console.log("not found " + mainCoin);
+                return;
             }
         }
-        if (!find) continue;
-        let buy = getPrice(arrUSDT[i]['symbol'], (JSON.parse(JSON.stringify(arrPrice))));
-        // if (arrUSDT[i]['symbol'] === 'MITHUSDT') {
-        //     console.log(arrUSDT[i])
-        //     console.log( " : " + buy);
-        // }
-        let prWithMainCoin = getPrice(arrUSDT[i]['baseAsset'] + mainCoin, (JSON.parse(JSON.stringify(arrPrice))));
-
-
-        let buyCoin = (1 / buy).toFixed(8);
-
-        let transitionToMoinCoin = (buyCoin * prWithMainCoin).toFixed(8);
-
-        arrResult[i] = transitionToMoinCoin * prMainCoin;
-
-        if (arrResult[i] >= 1.003){
-            // console.log(arrUSDT[i]['symbol']+' buy coin ' + buy);
-            pri(mainCoin, arrResult[i], arrUSDT[i]['symbol'], buy, prWithMainCoin, prMainCoin );
-
+    for (let i = 0; i < arrUSDT.length; i++) {
+        if (arrUSDT[i]['baseAsset'] === mainCoin) {
+            continue
         }
-        // console.log('Res')
-        // console.log(arrUSDT[i]['symbol'] + " = " + arrResult[i]);
+        let prCoin_Main;
+        if (!arrKey[arrUSDT[i]['baseAsset'] + '_' + mainCoin]) {
+            continue
+        }
+
+        if ( arrKey[arrUSDT[i]['baseAsset'] + '_' + mainCoin]['status'] === "BREAK"){
+            continue
+        }
+            prCoin_Main = arrKey[arrUSDT[i]['baseAsset'] + '_' + mainCoin]['price'];
+
+        // if (arrKey[arrUSDT[i]['baseAsset'] + '_' + mainCoin] && arrKey[arrUSDT[i]['baseAsset'] + '_' + mainCoin]['status'] !== "BREAK") {
+        //     prCoin_Main = arrKey[arrUSDT[i]['baseAsset'] + '_' + mainCoin]['price'];
+        // }else {
+        //     if (arrKey[mainCoin + '_' + arrUSDT[i]['baseAsset']] && arrKey[mainCoin + '_' + arrUSDT[i]['baseAsset']]['status'] !== "BREAK"){
+        //         prCoin_Main = arrKey[mainCoin + '_' + arrUSDT[i]['baseAsset']]['price'];
+        //     }else{
+        //         continue
+        //     }
+        // }
+
+        let prCoin_USDT = arrKey[arrUSDT[i]['baseAsset'] + '_' + arrUSDT[i]['quoteAsset']]['price'];
+        let buyCoin = (1 / prCoin_USDT).toFixed(8);
+        let buyMain = (buyCoin * prCoin_Main).toFixed(8);
+        arrResult[i] = buyMain * pr_Main_USDT;
+
+        if (arrResult[i] >= 1.003) {
+            pri(mainCoin, arrResult[i], arrUSDT[i]['symbol'], prCoin_USDT, prCoin_Main, pr_Main_USDT)
+        }
     }
-    // console.log(arrResult));
+    console.log(arrResult);
     // printRes(mainCoin, 'USDT', arrResult, arrUSDT);
+}
+
+
+function addP(withCoin, mainCoin) {
+    let parent = document.querySelector('#parent2');
+    let p = document.createElement('p');
+    p.style.background = 'springgreen';
+    p.style.fontSize = '25px';
+    p.innerText = withCoin + ' with ' + mainCoin + '\n';
+    parent.append(p);
 
 }
-function pri (mainCoin, res, coin, buyCoin, buyMain, main){
+
+function pri(mainCoin, res, coin, buyCoin, buyMain, main) {
     let parent = document.querySelector('#parent2');
     let p = document.createElement('p');
     p.style.background = 'lightcoral';
-    p.innerText += (coin + " -> " + res + '\n');
+    p.innerText += (coin + " -> " + res + " -> " + mainCoin + '\n');
     p.innerText += ("Buy " + ": " + buyCoin + " => " + buyMain + " => " + main);
 
     parent.append(p);
 
 }
 
-function printRes (mainCoin, withCoin, arrResult, arr){
+function printRes(mainCoin, withCoin, arrResult, arr) {
     // console.log(arrResult);
 
     let parent = document.querySelector('#parent2');
     let p = document.createElement('p');
 
-    p.innerText = withCoin + ' with ' + mainCoin+'\n';
+    p.innerText = withCoin + ' with ' + mainCoin + '\n';
     parent.append(p);
 
     for (let k = 0; k < arrResult.length; k++) {
-        if (arrResult[k] >= 1.003 ) {
+        if (arrResult[k] >= 1.003) {
             let p1 = document.createElement('p');
             if (arrResult[k] <= 5) {
                 if (arrResult[k] >= 1.003) p1.style.background = 'lightcoral';
@@ -191,6 +157,7 @@ function printRes (mainCoin, withCoin, arrResult, arr){
         }
     }
 }
+
 setTimeout(function() {
     location.reload();
-}, 30000);
+}, 90000);
