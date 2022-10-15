@@ -105,7 +105,7 @@ function buy_sell_sell_USDT(arrKey, arrUSDT, mainCoin) {
         let buyMain = (buyCoin * prCoin_Main).toFixed(8);
         arrResult[i] = buyMain * pr_Main_USDT;
 
-        if (arrResult[i] >= 1.003) {
+        if (arrResult[i] >= 1.01) {
             pri(mainCoin, arrResult[i], arrUSDT[i]['symbol'], prCoin_USDT, prCoin_Main, pr_Main_USDT)
         }
     }
