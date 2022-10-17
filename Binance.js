@@ -1,3 +1,4 @@
+
 let setting = {
     // "url": "https://api3.binance.com/api/v3/ticker/bookTicker",
     // "url": "https://api3.binance.com/api/v3/ticker/price?symbol=ETHBTC",
@@ -21,8 +22,9 @@ let setting1 = {
 };
 // let price = [];
 
-$.ajax(setting1).done(function (response) {
+let message = ''
 
+$.ajax(setting1).done(function (response) {
     let arrKey = response['symbols'];
     console.log(arrKey);
     let arrUSDT = [];
@@ -57,12 +59,33 @@ $.ajax(setting1).done(function (response) {
         buy_sell_sell_USDT(arrKey, arrUSDT, 'ETH');
         buy_sell_sell_USDT(arrKey, arrUSDT, 'EUR');
         buy_sell_sell_USDT(arrKey, arrUSDT, 'GBP');
+        if (message.length > 0){
+            bot();
+        }
+        // console.log(message.length);
+        // bot()
     });
 
 });
+function bot (){
+    const TOKEN = '5729974955:AAFAK-WSesmjYoN9xq0-k3jdnS6Pqq-9Jh4';
+    const CHART_ID = '-1001869234502';
+    const URI_API = `https://api.telegram.org/bot${TOKEN}/sendMessage`;
 
+    axios.post(URI_API, {
+        chat_id: CHART_ID,
+        parse_mode: 'html',
+        text: message
+    })
+}
+// function message (mainCoin, res, coin, buyCoin, buyMain, main){
+//     let message = `<b></b>`
+//
+// }
 function buy_sell_sell_USDT(arrKey, arrUSDT, mainCoin) {
     addP("USDT", mainCoin);
+    // message += `<b>USDT with ${mainCoin}</b>\n`
+
     let arrResult = [];
     // debugger
     let pr_Main_USDT
@@ -100,6 +123,7 @@ function buy_sell_sell_USDT(arrKey, arrUSDT, mainCoin) {
         //     }
         // }
 
+
         let prCoin_USDT = arrKey[arrUSDT[i]['baseAsset'] + '_' + arrUSDT[i]['quoteAsset']]['price'];
         let buyCoin = (1 / prCoin_USDT).toFixed(8);
         let buyMain = (buyCoin * prCoin_Main).toFixed(8);
@@ -107,6 +131,11 @@ function buy_sell_sell_USDT(arrKey, arrUSDT, mainCoin) {
 
         if (arrResult[i] >= 1.01) {
             pri(mainCoin, arrResult[i], arrUSDT[i]['symbol'], prCoin_USDT, prCoin_Main, pr_Main_USDT)
+            if (arrResult[i] >= 1.03) {
+                message += `\n<b>USDT -> ${arrUSDT[i]['baseAsset']} -> ${mainCoin} -> USDT (result: ${arrResult[i]}</b>\n`
+                // message += `<i>${arrUSDT[i]['symbol']} -> ${arrResult[i]}, ${mainCoin}</i>\n`
+                message += `<i>Buy: ${prCoin_USDT} => ${prCoin_Main} => ${pr_Main_USDT}</i>\n`
+            }
         }
     }
     console.log(arrResult);
@@ -160,4 +189,4 @@ function printRes(mainCoin, withCoin, arrResult, arr) {
 
 setTimeout(function() {
     location.reload();
-}, 90000);
+}, 3600000);
