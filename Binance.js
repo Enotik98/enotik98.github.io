@@ -55,15 +55,27 @@ $.ajax(setting1).done(function (response) {
             return arr
         }, {});
 
+        //coin/mainCoin
         buy_sell_sell_USDT(arrKey, arrUSDT, 'BTC');
         buy_sell_sell_USDT(arrKey, arrUSDT, 'ETH');
         buy_sell_sell_USDT(arrKey, arrUSDT, 'EUR');
         buy_sell_sell_USDT(arrKey, arrUSDT, 'GBP');
+        buy_sell_sell_USDT(arrKey, arrUSDT, 'BNB');
+        // buy_sell_sell_USDT(arrKey, arrUSDT, 'BUSD');
+
+
+        //mainCoin/coin
+        buy_buy_sell_USDT(arrKey, arrUSDT, 'LTC');
+        buy_buy_sell_USDT(arrKey, arrUSDT, 'XRP');
+        buy_buy_sell_USDT(arrKey, arrUSDT, 'ADA');
+        buy_buy_sell_USDT(arrKey, arrUSDT, 'ETC');
+
+        buy_sell_buy_USDT(arrKey, arrUSDT, 'UAH');
+
         if (message.length > 0){
             bot();
         }
-        // console.log(message.length);
-        // bot()
+
     });
 
 });
@@ -82,6 +94,101 @@ function bot (){
 //     let message = `<b></b>`
 //
 // }
+function buy_sell_buy_USDT(arrKey, arrUSDT, mainCoin){
+    addP("USDT", mainCoin);
+    // message += `<b>USDT with ${mainCoin}</b>\n`
+
+    let arrResult = [];
+    // debugger
+    let pr_Main_USDT
+    if (arrKey[mainCoin + '_USDT']){
+        pr_Main_USDT = arrKey[mainCoin + '_USDT']['price'];
+    }else {
+        if (arrKey['USDT_'+mainCoin]){
+            pr_Main_USDT = arrKey['USDT_'+mainCoin]['price'];
+        }else {
+            console.log("not found " + mainCoin);
+            return;
+        }
+    }
+    for (let i = 0; i < arrUSDT.length; i++) {
+        if (arrUSDT[i]['baseAsset'] === mainCoin) {
+            continue
+        }
+        let prCoin_Main;
+        if (!arrKey[arrUSDT[i]['baseAsset'] + '_' + mainCoin]) {
+            continue
+        }
+
+        if ( arrKey[arrUSDT[i]['baseAsset'] + '_' + mainCoin]['status'] === "BREAK"){
+            continue
+        }
+        prCoin_Main = arrKey[arrUSDT[i]['baseAsset'] + '_' + mainCoin]['price'];
+
+        let prCoin_USDT = arrKey[arrUSDT[i]['baseAsset'] + '_' + arrUSDT[i]['quoteAsset']]['price'];
+        let buyCoin = (1 / prCoin_USDT).toFixed(8);
+        let buyMain = (buyCoin * prCoin_Main).toFixed(8);
+        arrResult[i] = buyMain / pr_Main_USDT;
+
+        if (arrResult[i] >= 1.01) {
+            pri(mainCoin, arrResult[i], arrUSDT[i]['symbol'], prCoin_USDT, prCoin_Main, pr_Main_USDT)
+            if (arrResult[i] >= 1.03) {
+                message += `\n<b>USDT -> ${arrUSDT[i]['baseAsset']} -> ${mainCoin} -> USDT (result: ${arrResult[i]}</b>\n`
+                // message += `<i>${arrUSDT[i]['symbol']} -> ${arrResult[i]}, ${mainCoin}</i>\n`
+                message += `<i>Buy: ${prCoin_USDT} => ${prCoin_Main} => ${pr_Main_USDT}</i>\n`
+            }
+        }
+    }
+    console.log(arrResult);
+}
+function buy_buy_sell_USDT(arrKey, arrUSDT, mainCoin){
+    addP("USDT", mainCoin);
+    let arrResult = [];
+    let pr_Main_USDT;
+    if (arrKey[mainCoin + '_USDT']){
+        pr_Main_USDT = arrKey[mainCoin + '_USDT']['price'];
+    }else {
+        if (arrKey['USDT_'+mainCoin]){
+            pr_Main_USDT = arrKey['USDT_'+mainCoin]['price'];
+        }else {
+            console.log("not found " + mainCoin);
+            return;
+        }
+    }
+    for (let i = 0; i < arrUSDT.length; i++) {
+        //елемент не равен гланой монете
+        // debugger
+        if (arrUSDT[i]['baseAsset'] === mainCoin) {
+            continue
+        }
+        let prCoin_Main;
+        //нету пары с главной монетой
+        if (!arrKey[mainCoin + '_' + arrUSDT[i]['baseAsset']]) {
+            continue
+        }
+        //проверка на трейдинг
+        if ( arrKey[mainCoin + '_' + arrUSDT[i]['baseAsset']]['status'] === "BREAK"){
+            continue
+        }
+        prCoin_Main = arrKey[mainCoin + '_' + arrUSDT[i]['baseAsset']]['price'];
+
+        let prCoin_USDT = arrKey[arrUSDT[i]['baseAsset'] + '_' + arrUSDT[i]['quoteAsset']]['price'];
+        let buyCoin = (1 / prCoin_USDT).toFixed(8);
+        let buyMain = (buyCoin / prCoin_Main).toFixed(8);
+        arrResult[i] = buyMain * pr_Main_USDT;
+
+        if (arrResult[i] >= 1.01) {
+            pri(mainCoin, arrResult[i], arrUSDT[i]['symbol'], prCoin_USDT, prCoin_Main, pr_Main_USDT)
+            if (arrResult[i] >= 1.03) {
+                message += `\n<b>USDT -> ${arrUSDT[i]['baseAsset']} -> ${mainCoin} -> USDT (result: ${arrResult[i]}</b>\n`
+                // message += `<i>${arrUSDT[i]['symbol']} -> ${arrResult[i]}, ${mainCoin}</i>\n`
+                message += `<i>Buy: ${prCoin_USDT} => ${prCoin_Main} => ${pr_Main_USDT}</i>\n`
+            }
+        }
+    }
+    console.log(arrResult);
+
+}
 function buy_sell_sell_USDT(arrKey, arrUSDT, mainCoin) {
     addP("USDT", mainCoin);
     // message += `<b>USDT with ${mainCoin}</b>\n`
@@ -112,17 +219,6 @@ function buy_sell_sell_USDT(arrKey, arrUSDT, mainCoin) {
             continue
         }
             prCoin_Main = arrKey[arrUSDT[i]['baseAsset'] + '_' + mainCoin]['price'];
-
-        // if (arrKey[arrUSDT[i]['baseAsset'] + '_' + mainCoin] && arrKey[arrUSDT[i]['baseAsset'] + '_' + mainCoin]['status'] !== "BREAK") {
-        //     prCoin_Main = arrKey[arrUSDT[i]['baseAsset'] + '_' + mainCoin]['price'];
-        // }else {
-        //     if (arrKey[mainCoin + '_' + arrUSDT[i]['baseAsset']] && arrKey[mainCoin + '_' + arrUSDT[i]['baseAsset']]['status'] !== "BREAK"){
-        //         prCoin_Main = arrKey[mainCoin + '_' + arrUSDT[i]['baseAsset']]['price'];
-        //     }else{
-        //         continue
-        //     }
-        // }
-
 
         let prCoin_USDT = arrKey[arrUSDT[i]['baseAsset'] + '_' + arrUSDT[i]['quoteAsset']]['price'];
         let buyCoin = (1 / prCoin_USDT).toFixed(8);
