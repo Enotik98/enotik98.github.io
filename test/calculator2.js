@@ -113,9 +113,11 @@ $('.sub').click(function (e) {
         }
         if ($('.surfaceSelect').is(':visible')) {
             liter = (square * product['Layers']) / product[data['preparing_surface']]
+            $('.result-window').append('<p>Увага! Основи з високою поглинаючою здатністю рекомендуємо ґрунтувати у 2-3 рази, запобігаючи переґрунтування!</p>')
         }
         $('#current').text(data['name']);
         $('#layers').text(product['Layers']);
+
     }
     if ($('#decorative').is(':visible')) {
         product = product['Decorative'][data['decorative_name']][data['decorative_type']];
@@ -127,6 +129,7 @@ $('.sub').click(function (e) {
     $('.result-window').removeClass('d-none')
     $('#result').text(liter);
     $('#resultSquare').text(square);
+
 })
 
 
