@@ -77,7 +77,7 @@ $('.sub').click(function (e) {
         const formData = new FormData(form);
         return Object.fromEntries(formData.entries());
     }))
-    console.log(data);
+    // console.log(data);
 
     let square = 0;
     if (data['square']) {
