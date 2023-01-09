@@ -1,4 +1,3 @@
-$success:
 $('#preparing, #decorative').hide()
 $('.painting, .preparing, .decorative').click(function (e) {
     e.preventDefault();
