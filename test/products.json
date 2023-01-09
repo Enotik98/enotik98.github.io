@@ -1,0 +1,361 @@
+{
+  "Painting":{
+    "Інтер'єрні фарби": {
+      "Interior Classic": {
+        "pre-packing": [
+          1,
+          3,
+          5,
+          10
+        ],
+        "Structured": 8,
+        "Repainting": 9,
+        "Plasterer": 10,
+        "Layers": 2
+      },
+      "Interior Optimal": {
+        "pre-packing": [
+          1,
+          3,
+          5,
+          10
+        ],
+        "Structured": 8,
+        "Repainting": 9,
+        "Plasterer": 10,
+        "Layers": 2
+      },
+      "Interior Professional": {
+        "pre-packing": [
+          1,
+          3,
+          5,
+          10
+        ],
+        "Structured": 8,
+        "Repainting": 9,
+        "Plasterer": 10,
+        "Layers": 2
+      },
+      "Interior Latex": {
+        "pre-packing": [
+          1,
+          3,
+          5,
+          10
+        ],
+        "Structured": 8,
+        "Repainting": 9,
+        "Plasterer": 10,
+        "Layers": 2
+      },
+      "Interior Batiste": {
+        "pre-packing": [
+          1,
+          3,
+          5,
+          10
+        ],
+        "Structured": 8,
+        "Repainting": 9,
+        "Plasterer": 10,
+        "Layers": 2
+      },
+      "Interior Platinum" : {
+        "pre-packing": [
+          1,
+          3,
+          5,
+          10
+        ],
+        "Structured": 8,
+        "Repainting": 9,
+        "Plasterer": 10,
+        "Layers": 2
+      }
+    },
+    "Фасадні фарби": {
+      "Fasad Classic": {
+        "pre-packing": [
+          1,
+          3,
+          5,
+          10
+        ],
+        "Structured": 7,
+        "Repainting": 8,
+        "Plasterer": 9,
+        "Layers": 2
+      },
+      "Fasad Classic Plus": {
+        "pre-packing": [
+          1,
+          3,
+          5,
+          10
+        ],
+        "Structured": 7,
+        "Repainting": 8,
+        "Plasterer": 9,
+        "Layers": 2
+      },
+      "Fasad Standard": {
+        "pre-packing": [
+          1,
+          3,
+          5,
+          10
+        ],
+        "Structured": 8,
+        "Repainting": 9,
+        "Plasterer": 10,
+        "Layers": 2
+      },
+      "Fasad Platinum": {
+        "pre-packing": [
+          1,
+          3,
+          5,
+          10
+        ],
+        "Structured": 8,
+        "Repainting": 9,
+        "Plasterer": 10,
+        "Layers": 2
+      },
+      "Fasad Premium": {
+        "pre-packing": [
+          1,
+          3,
+          5,
+          10
+        ],
+        "Structured": 8,
+        "Repainting": 9,
+        "Plasterer": 10,
+        "Layers": 2
+      },
+      "Fasad Silicat": {
+        "pre-packing": [
+          1,
+          3,
+          5,
+          10
+        ],
+        "Structured": 8,
+        "Repainting": 9,
+        "Plasterer": 10,
+        "Layers": 2
+      }
+    },
+    "Спеціальні фарби": {
+      "Universal Rubber Classic": {
+        "pre-packing": [
+          1,
+          3,
+          5,
+          10
+        ],
+        "Structured": 2.5 ,
+        "Repainting": 3.75,
+        "Plasterer": 5,
+        "Layers": 2
+      },
+      "Universal Rubber Premium": {
+        "pre-packing": [
+          1,
+          3,
+          5,
+          10
+        ],
+        "Structured": 2.5,
+        "Repainting": 3.75,
+        "Plasterer": 5,
+        "Layers": 2
+      }
+    },
+    "Структурні фарби": {
+      "Structural Interior": {
+        "pre-packing": [
+          15
+        ],
+        "Structured": 0.6,
+        "Repainting": 0.9,
+        "Plasterer": 1.2,
+        "Layers": 1
+      },
+      "Structural Classic": {
+        "pre-packing": [
+          16
+        ],
+        "Structured": 0.6,
+        "Repainting": 0.9,
+        "Plasterer": 1.2,
+        "Layers": 1
+      },
+      "Structural Platinum": {
+        "pre-packing": [
+          16
+        ],
+        "Structured": 0.6,
+        "Repainting": 0.9,
+        "Plasterer": 1.2,
+        "Layers": 1
+      }
+    }
+  },
+  "Preparing": {
+    "Putty": {
+      "Finish Puts": {
+        "pre-packing": [
+          1.4,
+          8,
+          16,
+          27
+        ],
+        "Fatness 0.5": 0.5,
+        "Fatness 1.5": 0.75,
+        "Fatness 3": 1,
+        "Layers": 1
+      }
+    },
+    "Soil paint": {
+      "Acril Guartz": {
+        "pre-packing": 15,
+        "Fatness 0.5": 0.3,
+        "Fatness 1.5": 0.4,
+        "Fatness 3": 0.5,
+        "Layers": 2
+      },
+      "Silk Guartz": {
+        "pre-packing": 15,
+        "Fatness 0.5": 0.3,
+        "Fatness 1.5": 0.4,
+        "Fatness 3": 0.5,
+        "Layers": 2
+      }
+    },
+    "Undercoat": {
+      "Universal Grunt": {
+        "pre-packing": [
+          5,
+          10
+        ],
+        "Standard": 0.1,
+        "Strongly": 0.1,
+        "Layers": 2
+      },
+      "Ultra Grunt": {
+        "pre-packing": [
+          5,
+          10
+        ],
+        "Standard": 0.1,
+        "Strongly": 0.1,
+        "Layers": 2
+      },
+      "Silikon Grunt": {
+        "pre-packing": [
+          5,
+          10
+        ],
+        "Standard": 0.5,
+        "Strongly": 0.12,
+        "Layers": 2
+      },
+      "Ultra Sept": {
+        "pre-packing": [
+          2,
+          5
+        ],
+        "Standard": 0.1,
+        "Strongly": 0.2,
+        "Layers": 2
+      }
+    }
+  },
+  "Decorative": {
+    "Décor Base": {
+      "Камінцева": {
+        "Fatness 1-1,5": 2.8,
+        "Fatness 1,5-2": 3.3
+
+      },
+      "Короїд": {
+        "Fatness 1-1,5": 2.5,
+        "Fatness 1,5-2": 2.9
+
+      }
+    },
+    "Décor Classic": {
+      "Камінцева": {
+        "Fatness 0.5-1": 2.3,
+        "Fatness 1-1,5": 2.8,
+        "Fatness 1,5-2": 3.3,
+        "Fatness 2-2,5": 3.8
+
+      },
+      "Короїд": {
+        "Fatness 1-1,5": 2.5,
+        "Fatness 1,5-2": 2.9,
+        "Fatness 2-2,5": 3.5,
+        "Fatness 2,5-3": 3.4
+
+      }
+    },
+    "Décor Silk": {
+      "Камінцева": {
+        "Fatness 0.5-1": 2.3,
+        "Fatness 1-1,5": 2.8,
+        "Fatness 1,5-2": 3.3,
+        "Fatness 2-2,5": 3.8
+
+      },
+      "Короїд": {
+        "Fatness 1-1,5": 2.5,
+        "Fatness 1,5-2": 2.9,
+        "Fatness 2-2,5": 3.5,
+        "Fatness 2,5-3": 3.9
+
+      }
+    },
+    "Décor Platinum": {
+      "Камінцева": {
+        "Fatness 0.5-1": 2.3,
+        "Fatness 1-1,5": 2.8,
+        "Fatness 1,5-2": 3.3,
+        "Fatness 2-2,5": 3.8
+
+      },
+      "Короїд": {
+        "Fatness 1-1,5": 2.5,
+        "Fatness 1,5-2": 2.9,
+        "Fatness 2-2,5": 3.5,
+        "Fatness 2,5-3": 3.9
+
+      }
+    },
+    "Décor Professional": {
+      "Камінцева": {
+        "Fatness 0.5-1": 2.3,
+        "Fatness 1-1,5": 2.8,
+        "Fatness 1,5-2": 3.3,
+        "Fatness 2-2,5": 3.8
+
+      },
+      "Короїд": {
+        "Fatness 1-1,5": 2.5,
+        "Fatness 1,5-2": 2.9,
+        "Fatness 2-2,5": 3.5,
+        "Fatness 2,5-3": 3.9
+
+      }
+    },
+    "Décor Mosaic": {
+      "Камінцева": {
+        "Fatness 0.5-1": 3.3,
+        "Fatness 1-1,5": 3.8
+      }
+    }
+  }
+}
