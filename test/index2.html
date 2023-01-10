@@ -17,7 +17,7 @@
 
 </head>
 <body>
-<div class="container my-5 " style="max-width: 700px;">
+<div class="container my-5 " style="max-width: 600px;">
     <div class="row align-items-center">
         <div class="btn-group" role="group">
             <button type="button" data-target="painting" class="form-param painting btn btn-success active">Фарби
@@ -32,7 +32,7 @@
     </div>
     <div class="row p-4" id="forms">
         <form id="painting" class="mb-3">
-            <div class="row ">
+            <div class="row mb-3">
                 <div class="col">
                     <label for="painting_type">Виберіть тип продукта</label>
                     <select name="type" id="painting_type" class="form-select valid" required>
@@ -187,6 +187,7 @@
             <p><strong>Необхінда кількість продукту: </strong><strong id="result"></strong></p>
             <p><span>Кількість шарів: </span> <span id="layers"></span></p>
             <p><span>Площа під оздоблення, м&sup2: </span> <span id="resultSquare"></span></p>
+            <p id="note" class="d-none">Увага! Основи з високою поглинаючою здатністю рекомендуємо ґрунтувати у 2-3 рази, запобігаючи переґрунтування!</p>
         </div>
     </div>
 </div>
