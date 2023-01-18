@@ -1,3 +1,4 @@
+//start
 $('#preparing, #decorative').hide()
 $('.painting, .preparing, .decorative').click(function (e) {
     e.preventDefault();
@@ -9,6 +10,7 @@ $('.painting, .preparing, .decorative').click(function (e) {
     $('.result-window').addClass('d-none');
 })
 
+//input check square
 $('#square').on('input', checkInputSquare);
 $('.paramSquare').on('input', checkInputParamSquare)
 
@@ -38,6 +40,7 @@ function checkInputParamSquare() {
     }
 }
 
+//input doors and windows
 $('#nDoor').on('change', function () {
     $('#doorInput').empty();
     for (let k = 1; k <= this.value; k++) {
@@ -61,9 +64,10 @@ $('#form_square input').on('input', function () {
     }
 })
 
+//submit and calculate
 $('.sub').click(function (e) {
     // e.preventDefault();
-
+//valid form
     let valid;
     $('#forms form:visible').each(function (_) {
         return valid = this.reportValidity();
@@ -72,14 +76,17 @@ $('.sub').click(function (e) {
     if (!valid) {
         return
     }
+
+    //return object with data
     const forms = $('#forms form:visible')
     const data = Object.assign({}, ...$(forms).map((_, form) => {
         const formData = new FormData(form);
         return Object.fromEntries(formData.entries());
     }))
-    // console.log(data);
+    console.log(data);
     $('#note').addClass('d-none');
 
+    //calculate square
     let square = 0;
     if (data['square']) {
         square = data['square'];
@@ -98,12 +105,15 @@ $('.sub').click(function (e) {
         }
     }
 
+    //return products with json
     let product = window.json;
     let liter = 0;
+    let measure = 'л';
     if ($('#painting').is(':visible')) {
         product = product['Painting'][data['type']][data['name']];
         if (data['type'] === 'Структурні фарби') {
-            liter = (square * product['Layers']) / product[data['surface']];
+            liter = (square * product['Layers']) * product[data['surface']];
+            measure = 'кг';
         } else {
             liter = (square * product['Layers']) / product[data['surface']];
         }
@@ -112,13 +122,13 @@ $('.sub').click(function (e) {
     }
     if ($('#preparing').is(':visible')) {
         product = product['Preparing'][data['preparing_type']][data['name']];
-        console.log(product)
+        // console.log(product)
+        if ('Undercoat' !== data['preparing_type']) measure = 'кг';
         if ($('.layersSelect').is(':visible')) {
             liter = (square * product['Layers']) * product[data['preparing_layers']]
         }
         if ($('.surfaceSelect').is(':visible')) {
             liter = (square * product['Layers']) * product[data['preparing_surface']]
-            // $('.result-window').append('<p>Увага! Основи з високою поглинаючою здатністю рекомендуємо ґрунтувати у 2-3 рази, запобігаючи переґрунтування!</p>')
             $('#note').removeClass('d-none');
         }
         $('#current').text(data['name']);
@@ -128,12 +138,44 @@ $('.sub').click(function (e) {
     if ($('#decorative').is(':visible')) {
         product = product['Decorative'][data['decorative_name']][data['decorative_type']];
         liter = square * product[data['fraction']];
+        measure = 'кг';
         $('#current').text(data['decorative_name']);
         $('#layers').text(1);
     }
+    let quantity = 0;
+    let packing = '';
+    let temp = liter;
+    let pre_packing = product['pre-packing'];
+    for (let i = 0; i < pre_packing.length; i++) {
+        if (pre_packing.length !== 1) {
+            if (temp <= pre_packing[i]) {
+                quantity = 1;
+                packing += quantity + ' x ' + pre_packing[i] + measure;
+                break;
+            }
+            if (i === pre_packing.length - 1) {
+                quantity = Math.trunc(temp / pre_packing[i]);
+                temp = (temp / pre_packing[i]) - quantity;
+                packing += quantity + ' x ' + pre_packing[i] + measure;
+                if (temp !== 0) {
+                    i = -1;
+                    packing += ' та ';
+                }
+            }
+        } else {
+            quantity = Math.trunc(temp / pre_packing[i]);
+            temp = (temp / pre_packing[i]) - quantity;
+            if (temp !== 0) {
+                quantity ++;
+            }
+            packing += quantity + ' x ' + pre_packing[i] + measure;
+            break;
+        }
 
+    }
+    console.log(product['pre-packing'])
     $('.result-window').removeClass('d-none')
-    $('#result').text(liter.toFixed(1));
+    $('#result').text(liter.toFixed(1) + measure + ' або ' + packing);
     $('#resultSquare').text(square);
 
 })

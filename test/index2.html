@@ -3,20 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <title>Title 2</title>
-<!--    <link rel="stylesheet" href="style.css">-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <!--    <script src="jquery-3.6.0.js"></script>-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
             crossorigin="anonymous">
     </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
+    <!--    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>-->
+
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap" rel="stylesheet">
+
+    <!--    <link rel="stylesheet" href="style.css">-->
     <script type="module" src="calculator2.js"></script>
     <script src="inject.js"></script>
 
 </head>
 <body>
+<!--<header>-->
+<!--    <div class="contain">-->
+<!--        <img src="https://images.wallpaperscraft.ru/image/single/soldat_shlem_art_123765_320x240.jpg" alt="kos">-->
+<!--        <div class="soc">-->
+<!--            <a href="#" class="menu_soc"></a>-->
+<!--        </div>-->
+<!--        <div class="nav-bar">-->
+<!--            <div class="menu_item"><a href="#">КАТАЛОГ</a></div>-->
+<!--            <div class="menu_item"><a href="#">ДОКУМЕНТИ</a></div>-->
+<!--            <div class="menu_item"><a href="#">КОЛІРНІ РІШЕННЯ</a></div>-->
+<!--            <div class="menu_item"><a href="#">СИСТЕМА ПИРОГІВ</a></div>-->
+<!--            <div class="menu_item"><a href="#">ПРО КОМПАНІЮ</a></div>-->
+<!--            <div class="menu_item"><a href="#">ВІДЕО</a></div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</header>-->
 <div class="container my-5 " style="max-width: 600px;">
     <div class="row align-items-center">
         <div class="btn-group" role="group">
@@ -46,12 +69,12 @@
                     <select name="name" id="p_name" class="form-select name" required></select>
                 </div>
                 <div class="col-sm-6">
-                    <label for="p_surface">Тип поверхні</label>
-                    <select name="surface" id="p_surface" class="form-select" required>
+                    <label for="painting_surface">Тип поверхні</label>
+                    <select name="surface" id="painting_surface" class="form-select" required>
                         <option value="" disabled>Оберіть тип поверхні</option>
-                        <option value="Structured">Структурні поверхні</option>
-                        <option value="Repainting">Перефарбування поверхні</option>
-                        <option value="Plasterer">Готові зашпакльовані поверхні</option>
+<!--                        <option value="Structured">Структурні поверхні</option>-->
+<!--                        <option value="Repainting">Перефарбування поверхні</option>-->
+<!--                        <option value="Plasterer">Готові зашпакльовані поверхні</option>-->
                     </select>
                 </div>
             </div>
@@ -76,8 +99,7 @@
                 <div class="col-sm-6 form preparing_form">
                     <div class="layersSelect">
                         <label for="preparing_layers">Товщина шару</label>
-                        <select name="preparing_layers" id="preparing_layers" class="form-select preparingSelect"
-                                >
+                        <select name="preparing_layers" id="preparing_layers" class="form-select preparingSelect">
                             <option value="" disabled="disabled">--Оберіть--</option>
                             <option value="Fatness 0.5">0,5 mm</option>
                             <option value="Fatness 1.5">1,5 mm</option>
@@ -88,7 +110,7 @@
                         <label for="preparing_surface">Тип Основи</label>
                         <select name="preparing_surface" id="preparing_surface" class="form-select preparingSelect">
                             <option value="" disabled="disabled">--Оберіть--</option>
-                            <option value="Standard">Стандартні освнови</option>
+                            <option value="Standard">Стандартні основи</option>
                             <option value="Strongly">Сильно вбираючі основи</option>
                         </select>
                     </div>
@@ -106,7 +128,7 @@
                     </select>
                 </div>
             </div>
-            <div class="row">
+            <div id="decorative_param" class="row">
                 <div class="col-sm-6">
                     <label for="decorative_type">Виберіть тип</label>
                     <select name="decorative_type" id="decorative_type" class="form-select decorativeSelect"></select>
@@ -184,10 +206,11 @@
         <div class="result-window container p-3 border border-4 border-success rounded-5 d-none">
             <h3 class="text-center">Результат прорахунку</h3>
             <p><strong>Вибраний продукт: </strong><strong id="current"></strong></p>
-            <p><strong>Необхінда кількість продукту: </strong><strong id="result"></strong></p>
+            <p><strong>Необхідна кількість продукту: </strong><strong id="result"></strong></p>
             <p><span>Кількість шарів: </span> <span id="layers"></span></p>
             <p><span>Площа під оздоблення, м&sup2: </span> <span id="resultSquare"></span></p>
-            <p id="note" class="d-none">Увага! Основи з високою поглинаючою здатністю рекомендуємо ґрунтувати у 2-3 рази, запобігаючи переґрунтування!</p>
+            <p id="note" class="d-none">Увага! Основи з високою поглинаючою здатністю рекомендуємо ґрунтувати у 2-3
+                рази, запобігаючи переґрунтування!</p>
         </div>
     </div>
 </div>
