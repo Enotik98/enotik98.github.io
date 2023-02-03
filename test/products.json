@@ -11,7 +11,12 @@
         "Structured": 8,
         "Repainting": 9,
         "Plasterer": 10,
-        "Layers": 2
+        "Layers": 2,
+        "Related_products": [
+          "Universal Grunt",
+          "Finish Puts",
+          "Grunt Ultra Sept"
+        ]
       },
       "Interior Optima": {
         "pre-packing": [
@@ -23,7 +28,12 @@
         "Structured": 8,
         "Repainting": 9,
         "Plasterer": 10,
-        "Layers": 2
+        "Layers": 2,
+        "Related_products": [
+          "Universal Grunt",
+          "Finish Puts",
+          "Grunt Ultra Sept"
+        ]
       },
       "Interior Professional": {
         "pre-packing": [
@@ -35,7 +45,12 @@
         "Structured": 8,
         "Repainting": 9,
         "Plasterer": 10,
-        "Layers": 2
+        "Layers": 2,
+        "Related_products": [
+          "Universal Grunt",
+          "Finish Puts",
+          "Grunt Ultra Sept"
+        ]
       },
       "Interior Latex": {
         "pre-packing": [
@@ -47,7 +62,12 @@
         "Structured": 8,
         "Repainting": 9,
         "Plasterer": 10,
-        "Layers": 2
+        "Layers": 2,
+        "Related_products": [
+          "Universal Grunt",
+          "Finish Puts",
+          "Grunt Ultra Sept"
+        ]
       },
       "Interior Batiste": {
         "pre-packing": [
@@ -59,7 +79,12 @@
         "Structured": 8,
         "Repainting": 9,
         "Plasterer": 10,
-        "Layers": 2
+        "Layers": 2,
+        "Related_products": [
+          "Universal Grunt",
+          "Finish Puts",
+          "Grunt Ultra Sept"
+        ]
       },
       "Interior Platinum" : {
         "pre-packing": [
@@ -71,7 +96,12 @@
         "Structured": 8,
         "Repainting": 9,
         "Plasterer": 10,
-        "Layers": 2
+        "Layers": 2,
+        "Related_products": [
+          "Universal Grunt",
+          "Finish Puts",
+          "Grunt Ultra Sept"
+        ]
       }
     },
     "Фасадні фарби": {
@@ -85,7 +115,12 @@
         "Structured": 7,
         "Repainting": 8,
         "Plasterer": 9,
-        "Layers": 2
+        "Layers": 2,
+        "Related_products": [
+          "Acril Guartz",
+          "Ultra Grunt",
+          "Grunt Ultra Sept"
+        ]
       },
       "Fasad Classic Plus": {
         "pre-packing": [
@@ -97,7 +132,12 @@
         "Structured": 7,
         "Repainting": 8,
         "Plasterer": 9,
-        "Layers": 2
+        "Layers": 2,
+        "Related_products": [
+          "Acril Guartz",
+          "Ultra Grunt",
+          "Grunt Ultra Sept"
+        ]
       },
       "Fasad Standard": {
         "pre-packing": [
@@ -109,7 +149,12 @@
         "Structured": 8,
         "Repainting": 9,
         "Plasterer": 10,
-        "Layers": 2
+        "Layers": 2,
+        "Related_products": [
+          "Acril Guartz",
+          "Ultra Grunt",
+          "Grunt Ultra Sept"
+        ]
       },
       "Fasad Platinum": {
         "pre-packing": [
@@ -121,7 +166,12 @@
         "Structured": 8,
         "Repainting": 9,
         "Plasterer": 10,
-        "Layers": 2
+        "Layers": 2,
+        "Related_products": [
+          "Silikon Grunt",
+          "Silk Guartz",
+          "Grunt Ultra Sept"
+        ]
       },
       "Fasad Premium": {
         "pre-packing": [
@@ -133,7 +183,12 @@
         "Structured": 8,
         "Repainting": 9,
         "Plasterer": 10,
-        "Layers": 2
+        "Layers": 2,
+        "Related_products": [
+          "Silikon Grunt",
+          "Silk Guartz",
+          "Grunt Ultra Sept"
+        ]
       },
       "Fasad Silicat": {
         "pre-packing": [
@@ -145,7 +200,12 @@
         "Structured": 8,
         "Repainting": 9,
         "Plasterer": 10,
-        "Layers": 2
+        "Layers": 2,
+        "Related_products": [
+          "Silikon Grunt",
+          "Silk Guartz",
+          "Grunt Ultra Sept"
+        ]
       }
     },
     "Спеціальні фарби": {
@@ -159,7 +219,12 @@
         "Structured": 2.5 ,
         "Repainting": 3.75,
         "Plasterer": 5,
-        "Layers": 2
+        "Layers": 2,
+        "Related_products": [
+          "Universal Grunt",
+          "Finish Puts",
+          "Grunt Ultra Sept"
+        ]
       },
       "Universal Rubber Premium": {
         "pre-packing": [
@@ -171,7 +236,12 @@
         "Structured": 2.5,
         "Repainting": 3.75,
         "Plasterer": 5,
-        "Layers": 2
+        "Layers": 2,
+        "Related_products": [
+          "Universal Grunt",
+          "Finish Puts",
+          "Grunt Ultra Sept"
+        ]
       }
     },
     "Структурні фарби": {
@@ -182,7 +252,12 @@
         "Small": 0.6,
         "Average": 0.9,
         "Deep": 1.2,
-        "Layers": 1
+        "Layers": 1,
+        "Related_products": [
+          "Ultra Grunt",
+          "Finish Puts",
+          "Grunt Ultra Sept"
+        ]
       },
       "Structura Classic": {
         "pre-packing": [
@@ -191,7 +266,12 @@
         "Small": 0.6,
         "Average": 0.9,
         "Deep": 1.2,
-        "Layers": 1
+        "Layers": 1,
+        "Related_products": [
+          "Ultra Grunt",
+          "Finish Puts",
+          "Grunt Ultra Sept"
+        ]
       },
       "Structura Platinum": {
         "pre-packing": [
@@ -200,7 +280,12 @@
         "Small": 0.6,
         "Average": 0.9,
         "Deep": 1.2,
-        "Layers": 1
+        "Layers": 1,
+        "Related_products": [
+          "Ultra Grunt",
+          "Finish Puts",
+          "Grunt Ultra Sept"
+        ]
       }
     }
   },
@@ -216,7 +301,12 @@
         "Fatness 0.5": 0.5,
         "Fatness 1.5": 0.75,
         "Fatness 3": 1,
-        "Layers": 1
+        "Layers": 1,
+        "Related_products": [
+          "Universal Grunt",
+          "Interior Batiste",
+          "Grunt Ultra Sept"
+        ]
       }
     },
     "Soil paint": {
@@ -226,7 +316,12 @@
         ],
         "Standard": 0.3,
         "Strongly": 0.5,
-        "Layers": 2
+        "Layers": 2,
+        "Related_products": [
+          "Universal Grunt",
+          "Grunt Ultra Sept",
+          "Décor Platinum 'Короїд'"
+        ]
       },
       "Silk Guartz": {
         "pre-packing": [
@@ -234,7 +329,12 @@
           ],
         "Standard": 0.3,
         "Strongly": 0.5,
-        "Layers": 2
+        "Layers": 2,
+        "Related_products": [
+          "Universal Grunt",
+          "Grunt Ultra Sept",
+          "Décor Platinum 'Камінцева'"
+        ]
       }
     },
     "Undercoat": {
@@ -245,7 +345,12 @@
         ],
         "Standard": 0.1,
         "Strongly": 0.1,
-        "Layers": 2
+        "Layers": 2,
+        "Related_products": [
+          "Finish Puts",
+          "Acril Guartz",
+          "Structura Interior"
+        ]
       },
       "Ultra Grunt": {
         "pre-packing": [
@@ -254,7 +359,12 @@
         ],
         "Standard": 0.1,
         "Strongly": 0.1,
-        "Layers": 2
+        "Layers": 2,
+        "Related_products": [
+          "Finish Puts",
+          "Acril Guartz",
+          "Décor Professional 'Короїд'"
+        ]
       },
       "Silikon Grunt": {
         "pre-packing": [
@@ -263,16 +373,24 @@
         ],
         "Standard": 0.5,
         "Strongly": 0.12,
-        "Layers": 2
+        "Layers": 2,
+        "Related_products": [
+          "Finish Puts",
+          "Silk Guartz",
+          "Décor Platinum 'Камінцева'"
+        ]
       },
-      "Ultra Sept": {
+      "Grunt Ultra Sept": {
         "pre-packing": [
           2,
           5
         ],
         "Standard": 0.1,
         "Strongly": 0.2,
-        "Layers": 2
+        "Layers": 2,
+        "Related_products": [
+          "Universal Rubber Classic"
+        ]
       }
     }
   },
@@ -283,14 +401,26 @@
         "Фракція 1,5-2": 3.3,
         "pre-packing": [
           25
-        ]
+        ],
+        "Related_products": [
+          "Acril Guartz",
+          "Ultra Grunt",
+          "Grunt Ultra Sept"
+        ],
+        "Layers": 1
       },
       "Короїд": {
         "Фракція 1-1,5": 2.5,
         "Фракція 1,5-2": 2.9,
         "pre-packing": [
           25
-        ]
+        ],
+        "Related_products": [
+          "Acril Guartz",
+          "Ultra Grunt",
+          "Grunt Ultra Sept"
+        ],
+        "Layers": 1
       }
     },
     "Décor Classic": {
@@ -301,7 +431,13 @@
         "Фракція 2-2,5": 3.8,
         "pre-packing": [
           25
-        ]
+        ],
+        "Related_products": [
+          "Acril Guartz",
+          "Ultra Grunt",
+          "Grunt Ultra Sept"
+        ],
+        "Layers": 1
       },
       "Короїд": {
         "Фракція 1-1,5": 2.5,
@@ -310,7 +446,13 @@
         "Фракція 2,5-3": 3.4,
         "pre-packing": [
           25
-        ]
+        ],
+        "Related_products": [
+          "Acril Guartz",
+          "Ultra Grunt",
+          "Grunt Ultra Sept"
+        ],
+        "Layers": 1
       }
     },
     "Décor Silk": {
@@ -321,7 +463,13 @@
         "Фракція 2-2,5": 3.8,
         "pre-packing": [
           25
-        ]
+        ],
+        "Related_products": [
+          "Silikon Grunt",
+          "Silk Guartz",
+          "Grunt Ultra Sept"
+        ],
+        "Layers": 1
       },
       "Короїд": {
         "Фракція 1-1,5": 2.5,
@@ -330,7 +478,13 @@
         "Фракція 2,5-3": 3.9,
         "pre-packing": [
           25
-        ]
+        ],
+        "Related_products": [
+          "Acril Guartz",
+          "Ultra Grunt",
+          "Grunt Ultra Sept"
+        ],
+        "Layers": 1
       }
     },
     "Décor Platinum": {
@@ -341,7 +495,13 @@
         "Фракція 2-2,5": 3.8,
         "pre-packing": [
           25
-        ]
+        ],
+        "Related_products": [
+          "Silikon Grunt",
+          "Silk Guartz",
+          "Grunt Ultra Sept"
+        ],
+        "Layers": 1
       },
       "Короїд": {
         "Фракція 1-1,5": 2.5,
@@ -350,7 +510,13 @@
         "Фракція 2,5-3": 3.9,
         "pre-packing": [
           25
-        ]
+        ],
+        "Related_products": [
+          "Silikon Grunt",
+          "Silk Guartz",
+          "Grunt Ultra Sept"
+        ],
+        "Layers": 1
       }
     },
     "Décor Professional": {
@@ -361,7 +527,13 @@
         "Фракція 2-2,5": 3.8,
         "pre-packing": [
           25
-        ]
+        ],
+        "Related_products": [
+          "Silikon Grunt",
+          "Silk Guartz",
+          "Grunt Ultra Sept"
+        ],
+        "Layers": 1
       },
       "Короїд": {
         "Фракція 1-1,5": 2.5,
@@ -370,7 +542,13 @@
         "Фракція 2,5-3": 3.9,
         "pre-packing": [
           25
-        ]
+        ],
+        "Related_products": [
+          "Silikon Grunt",
+          "Silk Guartz",
+          "Grunt Ultra Sept"
+        ],
+        "Layers": 1
       }
     },
     "Décor Mosaic": {
@@ -378,7 +556,12 @@
         "Фракція 0,5-1": 3.6,
         "pre-packing": [
           16
-        ]
+        ],
+        "Related_products": [
+          "Ultra Grunt",
+          "Grunt Ultra Sept"
+        ],
+        "Layers": 1
       }
     }
   }

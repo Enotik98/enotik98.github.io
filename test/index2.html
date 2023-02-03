@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <title>Title 2</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-    <!--    <script src="jquery-3.6.0.js"></script>-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
@@ -17,44 +16,68 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
 
-    <!--    <link rel="stylesheet" href="style.css">-->
+    <link rel="stylesheet" href="style.css">
     <script type="module" src="calculator2.js"></script>
     <script src="inject.js"></script>
+    <meta name="viewport" content="width=device-width">
 
 </head>
 <body>
-<!--<header>-->
-<!--    <div class="contain">-->
-<!--        <img src="https://images.wallpaperscraft.ru/image/single/soldat_shlem_art_123765_320x240.jpg" alt="kos">-->
-<!--        <div class="soc">-->
-<!--            <a href="#" class="menu_soc"></a>-->
-<!--        </div>-->
-<!--        <div class="nav-bar">-->
-<!--            <div class="menu_item"><a href="#">КАТАЛОГ</a></div>-->
-<!--            <div class="menu_item"><a href="#">ДОКУМЕНТИ</a></div>-->
-<!--            <div class="menu_item"><a href="#">КОЛІРНІ РІШЕННЯ</a></div>-->
-<!--            <div class="menu_item"><a href="#">СИСТЕМА ПИРОГІВ</a></div>-->
-<!--            <div class="menu_item"><a href="#">ПРО КОМПАНІЮ</a></div>-->
-<!--            <div class="menu_item"><a href="#">ВІДЕО</a></div>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--</header>-->
-<div class="container my-5 " style="max-width: 600px;">
+<header>
+    <!--    <div class="contain">-->
+    <div class="logo">
+        <span class="logo_span">
+
+        <img src="https://mlinsvlmgiya.i.optimole.com/h64H_N4-wa45_tO5/w:auto/h:auto/q:auto/https://poli-plast.ua/wp-content/uploads/2020/06/161h77.png"
+             alt="poliplast">
+        </span>
+
+    </div>
+    <div class="soc">
+        <a href="#"><i class="fa fa-facebook fa-2x" aria-hidden="true"></i></a>
+        <a href="#"><i class="fa fa-instagram fa-2x" aria-hidden="true"></i></a>
+        <a href="#"><i class="fa fa-youtube-play fa-2x" aria-hidden="true"></i></a>
+    </div>
+    <div class="nav-bar">
+        <div class="menu menu__open">
+            <div class="menu_item">
+                <div class="closeModal"></div>
+            </div>
+            <div class="menu_item "><a href="#">КАТАЛОГ</a></div>
+            <div class="menu_item "><a href="#">ДОКУМЕНТИ</a></div>
+            <div class="menu_item "><a href="#">КОЛІРНІ РІШЕННЯ</a></div>
+            <div class="menu_item "><a href="#">СИСТЕМА ПИРОГІВ</a></div>
+            <div class="menu_item "><a href="#">ПРО КОМПАНІЮ</a></div>
+            <div class="menu_item "><a href="#">ВІДЕО</a></div>
+            <div class="menu_item "><a href="#">Контакти</a></div>
+            <div class="menu_item "><a href="#">0 800 300 590</a></div>
+        </div>
+        <!--            <div class="UA">-->
+        <span class="UA">UA</span>
+        <!--            </div>-->
+        <div class="header__burger">
+            <span></span>
+        </div>
+    </div>
+    <!--    </div>-->
+</header>
+<div class="container my-3" style="max-width: 60rem; ">
     <div class="row align-items-center">
         <div class="btn-group" role="group">
-            <button type="button" data-target="painting" class="form-param painting btn btn-success active">Фарби
+            <button type="button" data-target="Painting" class="button form-param Painting btn btn-success active">Фарби
             </button>
-            <button type="button" data-target="preparing" class="form-param preparing btn btn-success ">Підготовка
+            <button type="button" data-target="Preparing" class="form-param Preparing btn btn-success ">Підготовка
                 основи
             </button>
-            <button type="button" data-target="decorative" class="form-param decorative btn  btn-success">Декоративні
+            <button type="button" data-target="Decorative" class="form-param Decorative btn  btn-success">Декоративні
                 штукатурки
             </button>
         </div>
     </div>
     <div class="row p-4" id="forms">
-        <form id="painting" class="mb-3">
+        <form id="Painting" class="mb-3">
             <div class="row mb-3">
                 <div class="col">
                     <label for="painting_type">Виберіть тип продукта</label>
@@ -72,18 +95,15 @@
                     <label for="painting_surface">Тип поверхні</label>
                     <select name="surface" id="painting_surface" class="form-select" required>
                         <option value="" disabled>Оберіть тип поверхні</option>
-<!--                        <option value="Structured">Структурні поверхні</option>-->
-<!--                        <option value="Repainting">Перефарбування поверхні</option>-->
-<!--                        <option value="Plasterer">Готові зашпакльовані поверхні</option>-->
                     </select>
                 </div>
             </div>
         </form>
-        <form id="preparing" class="mb-3">
+        <form id="Preparing" class="mb-3">
             <div class="row mb-3 preparing_form form">
                 <div class="col">
                     <label for="preparing_type">Тип</label>
-                    <select name="preparing_type" id="preparing_type" class="form-select preparingSelect" required>
+                    <select name="type" id="preparing_type" class="form-select preparingSelect" required>
                         <option value="" disabled="disabled">Оберіть тип</option>
                         <option value="Putty">Шпаклівка</option>
                         <option value="Soil paint">Ґрунт-фарба</option>
@@ -119,11 +139,11 @@
 
             </div>
         </form>
-        <form id="decorative" class="mb-3">
-            <div class="row mb-3 decorative_form form">
+        <form id="Decorative" class="mb-3">
+            <div class="row mb-3 form">
                 <div class="col">
                     <label for="decorative_name">Виберіть продукт</label>
-                    <select name="decorative_name" id="decorative_name" class="form-select decorativeSelect" required>
+                    <select name="name" id="decorative_name" class="form-select decorativeSelect" required>
                         <option value="" disabled="disabled">Оберіть продукт</option>
                     </select>
                 </div>
@@ -131,7 +151,7 @@
             <div id="decorative_param" class="row">
                 <div class="col-sm-6">
                     <label for="decorative_type">Виберіть тип</label>
-                    <select name="decorative_type" id="decorative_type" class="form-select decorativeSelect"></select>
+                    <select name="type" id="decorative_type" class="form-select decorativeSelect"></select>
                 </div>
                 <div class="col-sm-6 decorative_form form">
                     <label for="decorative_fraction">Фракція</label>
@@ -195,6 +215,16 @@
                 </select>
             </div>
             <div id="windowInput"></div>
+            <div class="row">
+                <div class="col">
+                    <label for="related">
+                        <input type="checkbox" name="related" id="related" class="form-check-input"> Чи потрібні
+                        допоміжні
+                        продукти
+                    </label>
+                </div>
+            </div>
+            <div class="row ms-1 form-check" id="related_list"></div>
         </form>
     </div>
     <div class="row">
@@ -207,6 +237,9 @@
             <h3 class="text-center">Результат прорахунку</h3>
             <p><strong>Вибраний продукт: </strong><strong id="current"></strong></p>
             <p><strong>Необхідна кількість продукту: </strong><strong id="result"></strong></p>
+            <div class="related_result d-none">
+                <p><strong>Допоміжні продукти: </strong><strong id="related_result"></strong></p>
+            </div>
             <p><span>Кількість шарів: </span> <span id="layers"></span></p>
             <p><span>Площа під оздоблення, м&sup2: </span> <span id="resultSquare"></span></p>
             <p id="note" class="d-none">Увага! Основи з високою поглинаючою здатністю рекомендуємо ґрунтувати у 2-3

@@ -18,7 +18,7 @@ fetch('./products.json')
             let option = $("<option></option>").text(key);
             $('#painting_type').append(option)
         }
-        $('#painting_type').change(function () {
+        $('#painting_type').on('change', function () {
             painting_surface.length = 1;
             if (this.value === "Структурні фарби"){
                 let opt1 = $("<option></option>").val("Small").text("Дрібна текстура");
@@ -37,6 +37,8 @@ fetch('./products.json')
                 let opt = $("<option></option>").text(key);
                 $('.name').append(opt);
             }
+            $('#p_name').trigger('change')
+
         })
 
 
@@ -52,6 +54,7 @@ fetch('./products.json')
 
             $('.surfaceSelect').applyClass('d-none', condition).attr('required', condition);
             $('.layersSelect').applyClass('d-none', !condition).attr('required', !condition);
+            $('#preparing_name').trigger('change')
 
         })
 
@@ -63,9 +66,9 @@ fetch('./products.json')
     })
 $(document).on('change', '#decorative_name', function () {
     if (this.value === "Décor Mosaic"){
-        $('#decorative_param').addClass('d-none');
+        $('.decorative_form').addClass('d-none');
     }else {
-        $('#decorative_param').removeClass('d-none');
+        $('.decorative_form').removeClass('d-none');
     }
     let type = jsonObject[this.value];
     decorative_type.length = 0;
@@ -79,7 +82,7 @@ $(document).on('change', '#decorative_type', function () {
     let fraction = jsonObject[$('#decorative_name').val()][this.value];
     decorative_fraction.length = 0;
     for (let key in fraction) {
-        if (key === 'pre-packing') continue;
+        if (key === 'pre-packing' || key === 'Related_products' || key === "Layers") continue;
         let opt = $("<option></option>").text(key);
         $('#decorative_fraction').append(opt);
     }
