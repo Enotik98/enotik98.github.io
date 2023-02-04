@@ -1,7 +1,7 @@
-$('.header__burger').click(function (event){
+$('.header__burger').click(function (event) {
     $('.menu__open').css('top', 0);
 })
-$('.closeModal').click(function (event){
+$('.closeModal').click(function (event) {
     $('.menu__open').css('top', "-100%");
 })
 
@@ -60,15 +60,15 @@ function checkInputParamSquare() {
 $('#nDoor').on('change', function () {
     $('#doorInput').empty();
     for (let k = 1; k <= this.value; k++) {
-        $('#doorInput').append(`<div class="row has-validation"><div class="col-6">Ширина, м <input type='number' name='door_width${k}' class='form-control is-invalid' required></div>
-<div class="col-6">Висота, м <input type='number' name='door_height${k}' class='form-control is-invalid' required></div></div>`);
+        $('#doorInput').append(`<div class="row has-validation"><div class="col-6">Ширина, м <input type='number' name='door_width${k}' class='form-control is-invalid' step="any" required></div>
+<div class="col-6">Висота, м <input type='number' name='door_height${k}' class='form-control is-invalid' step="any" required></div></div>`);
     }
 })
 $('#nWindow').on('change', function () {
     $('#windowInput').empty();
     for (let k = 1; k <= this.value; k++) {
-        $('#windowInput').append(`<div class="row"><div class="col-6">Ширина, м <input type='number' name='window_width${k}' class='form-control is-invalid' required></div>
-<div class="col-6">Висота, м <input type='number' name='window_height${k}' class='form-control is-invalid' required></div></div>`);
+        $('#windowInput').append(`<div class="row"><div class="col-6">Ширина, м <input type='number' name='window_width${k}' class='form-control is-invalid' step="any" required></div>
+<div class="col-6">Висота, м <input type='number' name='window_height${k}' class='form-control is-invalid' step="any" required></div></div>`);
     }
 })
 $('#form_square input').on('input', function () {
@@ -121,6 +121,8 @@ $(document).on('change', '#related_list input', function () {
                 sel.append($('<option>').attr('value', key).text(optionVal(key)))
             }
         }
+    } else {
+        $(`.${this.id}`).addClass('d-none')
     }
 })
 
@@ -184,14 +186,30 @@ function CreatedRelatedList() {
         }
         $('#related_list').empty();
         for (let i = 0; i < relatedList.length; i++) {
-            $('#related_list').append(`<div class="row"><div class="col-6"><label for="related${i}"><input type="checkbox" name="related${i}" id="related${i}" class="form-ckeck-input" value="${relatedList[i]}"> ${relatedList[i]}</label></div>
-<div class="col-6"><select name="${relatedList[i]}" id="${relatedList[i]}" class="form-select related${i} d-none"></select></select></div></div>`)
+            $('#related_list').append(`<div class="row mt-2"><div class="col-sm-6 r${i}" ></div>
+<div class="col-sm-6"><select name="${relatedList[i]}" id="${relatedList[i]}" class="form-select related${i} d-none"></select></select></div></div>`)
+            // $('#related_list').append(`<div class="row"><div class="col-sm-6" ><label for="related${i}"><input type="checkbox" name="related${i}" id="related${i}" class="form-ckeck-input" value="${relatedList[i]}"> ${relatedList[i]}</label></div>
+            // <div class="col-sm-6"><select name="${relatedList[i]}" id="${relatedList[i]}" class="form-select related${i} d-none"></select></select></div></div>`)
+//
+
+            $(`.r${i}`).append($('<input>').prop({
+                type: 'checkbox',
+                class: 'form-check-input mb-3',
+                name: `related${i}`,
+                id: `related${i}`,
+                value: `${relatedList[i]}`
+
+            })).append($('<label></label>').prop({
+                for: `related${i}`,
+            }).text(` ${relatedList[i]}`))
         }
+
     } else {
         $('#related_list').empty();
         $('.related_result').addClass('d-none');
     }
 }
+
 
 //function by Melya
 // const findKeyInObject = (obj, fieldKey) => {
@@ -339,89 +357,150 @@ $('.sub').click(function () {
     }
 
     //packing
-    let quantity = 0;
-    let packing = '';
-    let temp = liter;
-    let pre_packing = product['pre-packing'];
-    for (let i = 0; i < pre_packing.length; i++) {
-        if (pre_packing.length !== 1) {
-            if (temp <= pre_packing[i]) {
-                quantity = 1;
-                packing += quantity + ' x ' + pre_packing[i] + measure;
-                break;
-            }
-            if (i === pre_packing.length - 1) {
-                quantity = Math.trunc(temp / pre_packing[i]);
-                temp = temp - (quantity * pre_packing[i]);
-                packing += quantity + ' x ' + pre_packing[i] + measure;
-                if (temp !== 0) {
-                    i = -1;
-                    packing += ' та ';
-                }
-            }
-        } else {
-            quantity = Math.trunc(temp / pre_packing[i]);
-            temp = (temp / pre_packing[i]) - quantity;
-            if (temp !== 0) {
-                quantity++;
-            }
-            packing += quantity + ' x ' + pre_packing[i] + measure;
-            break;
-        }
+    let packing = calculatePacking(product['pre-packing'], liter, measure);
 
-    }
-    // console.log(product['pre-packing'])
     $('.result-window').removeClass('d-none')
     $('#result').text(liter.toFixed(1) + measure + ' або ' + packing);
     $('#resultSquare').text(square);
 
 
     //related
+    // if ($('#related').is(':checked')) {
+    //     $('#related_result').empty();
+    //     let relatedArr = $("[id^=related]:not(#related):checked").map((_, el) => {
+    //         return $(el).val()
+    //     }).toArray();
+    //     // console.log("arr" + relatedArr)
+    //     // console.log("list" + relatedList)
+    //     let relatedObject = searchRelated([...relatedArr]);
+    //     let related_result = '';
+    //     // console.log(relatedObject)
+    //     for (let key in relatedObject) {
+    //         let relatedLiter = 0;
+    //         let type = data[key];
+    //         if (key.includes('Décor')) {
+    //             for (let i = 0; i < relatedArr.length; i++) {
+    //                 if (relatedArr[i].includes("'Короїд'") || relatedArr[i].includes("'Камінцева'")) {
+    //                     type = data[relatedArr[i]];
+    //                     break;
+    //                 }
+    //             }
+    //         } else {
+    //             type = data[key];
+    //         }
+    //         if (type.includes('Structura') || type.includes('Fatness') || key.includes('Décor') || type.includes("Standard") || type.includes("Strongly")) {
+    //             relatedLiter = (square * relatedObject[key]['Layers']) * relatedObject[key][type];
+    //
+    //         } else {
+    //             relatedLiter = (square * relatedObject[key]['Layers']) / relatedObject[key][type];
+    //         }
+    //         let relatedMeasure = "л";
+    //         if (type.includes('Structura') || type.includes('Fatness') || key.includes('Décor') || key.includes('Guartz')) {
+    //             relatedMeasure = "кг";
+    //         }
+    //
+    //         let relatedPacking = calculatePacking(relatedObject[key]['pre-packing'], relatedLiter, relatedMeasure);
+    //
+    //         related_result = $('<p></p>').text(key + ": " + relatedLiter.toFixed(1) + relatedMeasure + " або " + relatedPacking).addClass('ms-3');
+    //         // console.log(relatedLiter);
+    //         $('#related_result').append(related_result);
+    //     }
+    //
+    //     $('.related_result').removeClass('d-none');
+    //
+    // }
     if ($('#related').is(':checked')) {
+        $('#related_result').empty();
         let relatedArr = $("[id^=related]:not(#related):checked").map((_, el) => {
             return $(el).val()
         }).toArray();
         console.log("arr" + relatedArr)
-        console.log("list" + relatedList)
-        let relatedObject = searchRelated([...relatedArr]);
-        let related_result = '';
-        console.log(relatedObject)
-        for (let key in relatedObject) {
+
+        for (let i = 0; i < relatedArr.length; i++) {
+            let searchName = relatedArr[i];
+            let type = null;
+            let key = relatedArr[i];
+            if (key.includes('Короїд')) {
+                type = 'Короїд';
+                searchName = key.replace(/ 'Короїд'/, "");
+            }
+            if (key.includes('Камінцева')) {
+                searchName = key.replace(/ 'Камінцева'/, "");
+                type = 'Камінцева';
+            }
+            let relatedObject = findProductInJson(searchName);
+            if (type) {
+                relatedObject = relatedObject[type]
+            }
+
             let relatedLiter = 0;
-            let type = data[key];
-            if (key.includes('Décor')) {
-                for (let i = 0; i < relatedArr.length; i++) {
-                    if (relatedArr[i].includes("'Короїд'") || relatedArr[i].includes("'Камінцева'")) {
-                        type = data[relatedArr[i]];
-                        break;
-                    }
-                }
+            let selectorType = data[key];
+            if (selectorType.includes('Structura') || selectorType.includes('Fatness') || key.includes('Décor') || selectorType.includes("Standard") || selectorType.includes("Strongly")) {
+                relatedLiter = (square * relatedObject['Layers']) * relatedObject[selectorType];
             } else {
-                type = data[key];
+                relatedLiter = (square * relatedObject['Layers']) / relatedObject[selectorType];
             }
-            if (type.includes('Structura') || type.includes('Fatness') || key.includes('Décor') || type.includes("Standard") || type.includes("Strongly")) {
-                relatedLiter = (square * relatedObject[key]['Layers']) * relatedObject[key][type];
-
-            } else {
-                relatedLiter = (square * relatedObject[key]['Layers']) / relatedObject[key][type];
-            }
-            let related_measure = "л";
-            if (type.includes('Structura') || type.includes('Fatness') || key.includes('Décor') || key.includes('Guartz')) {
-                related_measure = "кг";
+            let relatedMeasure = "л";
+            if (selectorType.includes('Structura') || selectorType.includes('Fatness') || key.includes('Décor') || key.includes('Guartz')) {
+                relatedMeasure = "кг";
             }
 
-            related_result = $('<p></p>').text(key + ": " + relatedLiter.toFixed(1) + related_measure).addClass('ms-3');
-            console.log(relatedLiter);
+            let relatedPacking = calculatePacking(relatedObject['pre-packing'], relatedLiter, relatedMeasure);
+            let related_result = $('<p></p>').text(key + ": " + relatedLiter.toFixed(1) + relatedMeasure + " або " + relatedPacking).addClass('ms-3');
             $('#related_result').append(related_result);
-        }
 
+        }
         $('.related_result').removeClass('d-none');
+
 
     }
 })
 
 
 //calculate packing
-
+function calculatePacking(pre_packing, liter, measure) {
+    let quantity = 0
+    let result = '';
+    let packingMap = new Map();
+    for (let i = 0; i < pre_packing.length; i++) {
+        packingMap.set(pre_packing[i], 0);
+    }
+    packingMap = Object.fromEntries(packingMap);
+    for (let i = 0; i < pre_packing.length; i++) {
+        if (pre_packing.length !== 1) {
+            if (liter <= pre_packing[i]) {
+                packingMap[pre_packing[i]] += 1;
+                // result += quantity + ' x ' + pre_packing[i] + measure;
+                break;
+            } else {
+                if (i === pre_packing.length - 1) {
+                    quantity = Math.trunc(liter / pre_packing[i]);
+                    liter = liter - (quantity * pre_packing[i]);
+                    packingMap[pre_packing[i]] += quantity;
+                    // result += quantity + ' x ' + pre_packing[i] + measure;
+                    if (liter !== 0) {
+                        i = -1;
+                        // result += " та ";
+                    }
+                }
+            }
+        } else {
+            quantity = Math.trunc(liter / pre_packing[i]);
+            liter = liter - (quantity * pre_packing[i]);
+            if (liter !== 0) {
+                quantity++;
+            }
+            packingMap[pre_packing[i]] += quantity;
+            // result += quantity + ' x ' + pre_packing[i] + measure;
+            break;
+        }
+    }
+    for (let key in packingMap) {
+        if (packingMap[key] !== 0) {
+            result += " " + packingMap[key] + ' x ' + key + measure;
+        }
+    }
+    return result;
+}
 
 

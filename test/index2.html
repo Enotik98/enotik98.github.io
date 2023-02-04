@@ -171,23 +171,23 @@
             <div class="row mb-3 ">
                 <div class="col ">
                     <label for="square" class="squareLabel">Площа</label>
-                    <input type="number" name="square" id="square" class="form-control  is-invalid" required>
+                    <input type="number" name="square" id="square" step="any" class="form-control  is-invalid" required>
                 </div>
             </div>
             <div class="row">
                 <div class="col-sm-4">
                     <label for="width" class="paramLabel">Ширина кімнати</label>
-                    <input type="number" name="width" id="width" class="form-control paramSquare is-invalid"
+                    <input type="number" name="width" id="width" step="any" class="form-control paramSquare is-invalid"
                            required>
                 </div>
                 <div class="col-sm-4">
                     <label for="height" class="paramLabel">Висота кімнати</label>
-                    <input type="number" name="height" id="height" class="form-control paramSquare is-invalid"
+                    <input type="number" name="height" id="height" step="any" class="form-control paramSquare is-invalid"
                            required>
                 </div>
                 <div class="col-sm-4">
                     <label for="length" class="paramLabel">Довжина кімнати</label>
-                    <input type="number" name="length" id="length" class="form-control paramSquare is-invalid"
+                    <input type="number" name="length" id="length" step="any" class="form-control paramSquare is-invalid"
                            required>
                 </div>
             </div>
@@ -218,13 +218,12 @@
             <div class="row">
                 <div class="col">
                     <label for="related">
-                        <input type="checkbox" name="related" id="related" class="form-check-input"> Чи потрібні
-                        допоміжні
-                        продукти
+                        <input type="checkbox" name="related" id="related" class="form-check-input">
+                        Чи потрібні допоміжні продукти
                     </label>
                 </div>
             </div>
-            <div class="row ms-1 form-check" id="related_list"></div>
+            <div class="ms-4 " id="related_list"></div>
         </form>
     </div>
     <div class="row">
