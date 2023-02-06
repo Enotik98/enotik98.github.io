@@ -5,7 +5,8 @@
 html{
     min-width: 320px;
     width: 100%;
-    overflow-x: hidden;
+
+    /*overflow-x: hidden;*/
     font-size: 1vw;
 }
 body{
@@ -13,7 +14,8 @@ body{
     line-height: 1.25em;
     word-wrap: break-word;
     font-weight: 400;
-    justify-content: space-between;
+    /*width: 100%;*/
+    /*justify-content: space-between;*/
 
 }
 header {
@@ -126,7 +128,7 @@ header {
 
 @media (max-width: 767px) {
     html{
-        font-size: 3vh;
+        font-size: 2vh;
     }
     header {
         height: 1.7em;
