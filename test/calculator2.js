@@ -4,7 +4,7 @@ $('.header__burger').click(function (event) {
 $('.closeModal').click(function (event) {
     $('.menu__open').css('top', "-100%");
 })
-
+$('.logo_span img').data('link', "https://poli-plast.ua/ua").click(function () {window.location = $(this).data('link')});
 
 //start
 $('#Preparing, #Decorative').hide()
@@ -20,12 +20,9 @@ $('.Painting, .Preparing, .Decorative').click(function (e) {
     $('#related_list').empty();
 })
 $('#p_name, #preparing_name, #decorative_type').on('change', function (e) {
-    // e.stopPropagation();
-    // setTimeout(CreatedRelatedList, 100)
     CreatedRelatedList();
 });
-let eventList = $._data($('#painting_type')[0], 'events')
-console.log(eventList)
+
 //input check square
 $('#square').on('input', checkInputSquare);
 $('.paramSquare').on('input', checkInputParamSquare)
@@ -44,11 +41,8 @@ function checkInputSquare() {
 
 function checkInputParamSquare() {
     if (this.value.length) {
-        // $(this).removeClass('is-invalid').addClass('is-valid');
         $('#square').addClass('d-none').removeAttr('required');
         $('.squareLabel').addClass('d-none');
-    } else {
-        // $(this).addClass('is-invalid');
     }
     if (!$('#width').val() && !$('#height').val() && !$('#length').val()) {
         $('#square').removeClass('d-none').attr('required', true);
@@ -83,19 +77,12 @@ $(document).on('input', '#form_square input', function () {
         $(this).addClass('is-valid').removeClass('is-invalid')
     } else {
         $(this).addClass('is-invalid').removeClass('is-valid')
-
     }
 })
 
 
 $('#related').on('change', function () {
-
-    // let v = $("select[name='name']:visible").val()
-    // console.log(this.checked + ' ' + v);
-
-    //delete this function and add code her
     CreatedRelatedList()
-
 })
 $(document).on('change', '#related_list input', function () {
     let val = this.value;
@@ -109,9 +96,8 @@ $(document).on('change', '#related_list input', function () {
             val = val.replace(/ 'Камінцева'/, "");
             type = 'Камінцева';
         }
-        console.log(val)
+
         let sel = $(`.${this.id}`).removeClass('d-none');
-        // const relativeObject = findKeyInObject(window.json, val);
         let relativeObject = findProductInJson(val);
         if (type) {
             relativeObject = relativeObject[type];
@@ -173,7 +159,6 @@ function CreatedRelatedList() {
             $('#related').prop('checked', false);
             return;
         }
-        console.log(nameProduct + " " + typeProduct + " " + btn);
         if (btn !== 'Decorative') {
             relatedList = window.json[btn][typeProduct][nameProduct]['Related_products'];
         } else {
@@ -186,45 +171,25 @@ function CreatedRelatedList() {
         }
         $('#related_list').empty();
         for (let i = 0; i < relatedList.length; i++) {
-            $('#related_list').append(`<div class="row mt-2"><div class="col-sm-6 r${i}" ></div>
+            $('#related_list').append(`<div class="row align-items-center"><div class="col-sm-6 r${i}" ></div>
 <div class="col-sm-6"><select name="${relatedList[i]}" id="${relatedList[i]}" class="form-select related${i} d-none"></select></select></div></div>`)
-            // $('#related_list').append(`<div class="row"><div class="col-sm-6" ><label for="related${i}"><input type="checkbox" name="related${i}" id="related${i}" class="form-ckeck-input" value="${relatedList[i]}"> ${relatedList[i]}</label></div>
-            // <div class="col-sm-6"><select name="${relatedList[i]}" id="${relatedList[i]}" class="form-select related${i} d-none"></select></select></div></div>`)
-//
 
             $(`.r${i}`).append($('<input>').prop({
                 type: 'checkbox',
-                class: 'form-check-input mb-3',
+                class: 'form-check-input',
                 name: `related${i}`,
                 id: `related${i}`,
                 value: `${relatedList[i]}`
-
             })).append($('<label></label>').prop({
                 for: `related${i}`,
+                class: 'ps-1 pb-2'
             }).text(` ${relatedList[i]}`))
         }
-
     } else {
         $('#related_list').empty();
         $('.related_result').addClass('d-none');
     }
 }
-
-
-//function by Melya
-// const findKeyInObject = (obj, fieldKey) => {
-//     let result = null;
-//
-//     Object.keys(obj).forEach(key => {
-//         if (key === fieldKey) {
-//             result = obj[key];
-//         } else if (typeof obj[key] === 'object') {
-//             result = findKeyInObject(obj[key], fieldKey);
-//         }
-//     });
-//
-//     return result;
-// }
 
 function findProductInJson(name) {
     const fle = Object.assign(...Object.values(window.json))
@@ -237,66 +202,22 @@ function findProductInJson(name) {
     }
 }
 
-function searchRelated(relatedArr) {
-    const fl = Object.assign(...Object.values(window.json))
-    const sl = Object.assign(...Object.values(fl))
-    let typeDecor = null;
-    for (let i = 0; i < relatedArr.length; i++) {
-        if (relatedArr[i].includes("'Короїд'")) {
-            relatedArr[i] = relatedArr[i].replace(/ 'Короїд'/, '')
-            typeDecor = "Короїд"
-            console.log(relatedArr[i])
-            break;
-        }
-        if (relatedArr[i].includes("'Камінцева'")) {
-            relatedArr[i] = relatedArr[i].replace(/ 'Камінцева'/, '')
-            typeDecor = "Камінцева"
-            break;
-            // console.log(relatedArr[i])
-        }
-    }
-    let relatedListInJson = Object.keys(sl)
-        .filter((key) => {
-            return relatedArr.includes(key)
-        })
-        .reduce((obj, key) => {
-            obj[key] = sl[key]
-            return obj;
-        }, {})
-    if (Object.keys(relatedListInJson).length !== relatedArr.length) {
-        relatedListInJson = Object.assign({}, relatedListInJson, Object.keys(fl)
-            .filter((key) => {
-                return relatedArr.includes(key)
-            })
-            .reduce((obj, key) => {
-                obj[key] = fl[key][typeDecor]
-                return obj;
-            }, {}))
-    }
-
-    // console.log(relatedListInJson);
-    return relatedListInJson;
-}
-
 //submit and calculate
 $('.sub').click(function () {
-//valid form
+    //valid form
     let valid;
     $('#forms form:visible').each(function (_) {
         return valid = this.reportValidity();
     });
-
     if (!valid) {
         return
     }
-
     //return object with data
     const forms = $('#forms form:visible')
     const data = Object.assign({}, ...$(forms).map((_, form) => {
         const formData = new FormData(form);
         return Object.fromEntries(formData.entries());
     }))
-    console.log(data);
     $('#note').addClass('d-none');
 
     //calculate square
@@ -353,7 +274,7 @@ $('.sub').click(function () {
         liter = square * product[data['fraction']];
         measure = 'кг';
         $('#current').text(data['name']);
-        $('#layers').text(1);
+        $('#layers').text(product['Layers']);
     }
 
     //packing
@@ -365,56 +286,11 @@ $('.sub').click(function () {
 
 
     //related
-    // if ($('#related').is(':checked')) {
-    //     $('#related_result').empty();
-    //     let relatedArr = $("[id^=related]:not(#related):checked").map((_, el) => {
-    //         return $(el).val()
-    //     }).toArray();
-    //     // console.log("arr" + relatedArr)
-    //     // console.log("list" + relatedList)
-    //     let relatedObject = searchRelated([...relatedArr]);
-    //     let related_result = '';
-    //     // console.log(relatedObject)
-    //     for (let key in relatedObject) {
-    //         let relatedLiter = 0;
-    //         let type = data[key];
-    //         if (key.includes('Décor')) {
-    //             for (let i = 0; i < relatedArr.length; i++) {
-    //                 if (relatedArr[i].includes("'Короїд'") || relatedArr[i].includes("'Камінцева'")) {
-    //                     type = data[relatedArr[i]];
-    //                     break;
-    //                 }
-    //             }
-    //         } else {
-    //             type = data[key];
-    //         }
-    //         if (type.includes('Structura') || type.includes('Fatness') || key.includes('Décor') || type.includes("Standard") || type.includes("Strongly")) {
-    //             relatedLiter = (square * relatedObject[key]['Layers']) * relatedObject[key][type];
-    //
-    //         } else {
-    //             relatedLiter = (square * relatedObject[key]['Layers']) / relatedObject[key][type];
-    //         }
-    //         let relatedMeasure = "л";
-    //         if (type.includes('Structura') || type.includes('Fatness') || key.includes('Décor') || key.includes('Guartz')) {
-    //             relatedMeasure = "кг";
-    //         }
-    //
-    //         let relatedPacking = calculatePacking(relatedObject[key]['pre-packing'], relatedLiter, relatedMeasure);
-    //
-    //         related_result = $('<p></p>').text(key + ": " + relatedLiter.toFixed(1) + relatedMeasure + " або " + relatedPacking).addClass('ms-3');
-    //         // console.log(relatedLiter);
-    //         $('#related_result').append(related_result);
-    //     }
-    //
-    //     $('.related_result').removeClass('d-none');
-    //
-    // }
     if ($('#related').is(':checked')) {
         $('#related_result').empty();
         let relatedArr = $("[id^=related]:not(#related):checked").map((_, el) => {
             return $(el).val()
         }).toArray();
-        console.log("arr" + relatedArr)
 
         for (let i = 0; i < relatedArr.length; i++) {
             let searchName = relatedArr[i];
@@ -444,15 +320,11 @@ $('.sub').click(function () {
             if (selectorType.includes('Structura') || selectorType.includes('Fatness') || key.includes('Décor') || key.includes('Guartz')) {
                 relatedMeasure = "кг";
             }
-
             let relatedPacking = calculatePacking(relatedObject['pre-packing'], relatedLiter, relatedMeasure);
             let related_result = $('<p></p>').text(key + ": " + relatedLiter.toFixed(1) + relatedMeasure + " або " + relatedPacking).addClass('ms-3');
             $('#related_result').append(related_result);
-
         }
         $('.related_result').removeClass('d-none');
-
-
     }
 })
 
@@ -470,17 +342,14 @@ function calculatePacking(pre_packing, liter, measure) {
         if (pre_packing.length !== 1) {
             if (liter <= pre_packing[i]) {
                 packingMap[pre_packing[i]] += 1;
-                // result += quantity + ' x ' + pre_packing[i] + measure;
                 break;
             } else {
                 if (i === pre_packing.length - 1) {
                     quantity = Math.trunc(liter / pre_packing[i]);
                     liter = liter - (quantity * pre_packing[i]);
                     packingMap[pre_packing[i]] += quantity;
-                    // result += quantity + ' x ' + pre_packing[i] + measure;
                     if (liter !== 0) {
                         i = -1;
-                        // result += " та ";
                     }
                 }
             }
@@ -491,7 +360,6 @@ function calculatePacking(pre_packing, liter, measure) {
                 quantity++;
             }
             packingMap[pre_packing[i]] += quantity;
-            // result += quantity + ' x ' + pre_packing[i] + measure;
             break;
         }
     }
