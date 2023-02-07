@@ -1,8 +1,14 @@
-$('.header__burger').click(function (event) {
-    $('.menu__open').css('top', 0);
+// $('.header__burger').click(function (event) {
+//     $('.menu__open').css('top', 0);
+// })
+// $('.closeModal').click(function (event) {
+//     $('.menu__open').css('top', "-100%");
+$('.header_burger').click(function (){
+    $('.header_burger, .header_menu').toggleClass('active');
 })
-$('.closeModal').click(function (event) {
-    $('.menu__open').css('top', "-100%");
+$('.pointer').click(function (){
+    const target = $(this).data('target')
+    $(`#${target}`).toggleClass('active')
 })
 $('.logo_span img').data('link', "https://poli-plast.ua/ua").click(function () {window.location = $(this).data('link')});
 
