@@ -4,12 +4,16 @@
     border: 0;
     box-sizing: border-box;
 }
-
+/*html{*/
+/*    font-size: 1vh;*/
+/*}*/
+/*body{*/
+/*    font-size: 1.5em;*/
+/*}*/
 html, body {
     position: relative;
     height: 100%;
     font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
-
 }
 
 header {
@@ -19,15 +23,15 @@ header {
     position: relative;
     display: flex;
     z-index: 6;
-    font-size: 22px;
-    justify-content: space-between;
-    font-weight: bold;
-
+    font-size: 20px;
+    /*font-size: 1.6em;*/
+    /*justify-content: space-between;*/
+    font-weight: 400;
     /*align-items: center;*/
 }
 .header{
     width: 100%;
-    margin: 0 6em;
+    margin: 0 100px;
     position: relative;
     display: flex;
     justify-content: space-between;
@@ -37,6 +41,7 @@ header {
 .logo {
     position: relative;
     width: 260px;
+    /*width: 14em;*/
     height: 100%;
     justify-content: center;
     display: flex;
@@ -45,18 +50,18 @@ header {
 
 .logo_span {
     display: flex;
-
 }
 
 .logo_span img {
     display: inline-flex;
-    width: 260px;
-
-    /*width: 100%;*/
+    /*width: 260px;*/
+    /**/
+    width: 100%;
 }
 .header_list{
     display: flex;
     margin: 0;
+    padding-left: 10px;
     height: 100%;
 }
 .header_list li{
@@ -77,8 +82,9 @@ header {
     display: flex;
     justify-content: center;
     /*font-weight: bold;*/
-    margin-right: 3em;
-    margin-left: 15px;
+    /*margin-right: 3em;*/
+    margin-right: 70px;
+    margin-left: 20px;
 }
 .pointer{
     display: none;
@@ -91,10 +97,13 @@ header {
     position: absolute;
     background-color: rgb(89, 89, 89);
     min-width: 300px;
+
     /*visibility: hidden;*/
 }
 .header_item:hover, .menu_list li:hover{
     background-color: rgb(50, 50, 50);
+    transition: all 0.3s ease 0s;
+
 }
 .header_link{
     color: #ffffff;
@@ -145,7 +154,31 @@ header {
 .header_burger{
     display: none;
 }
-@media (max-width: 767px) {
+@media (max-width: 1370px) {
+    .header{
+        margin: 0 60px;
+    }
+    .logo{
+        width: 200px;
+    }
+    .menu_item{
+        margin-right: 30px;
+        margin-left: 15px;
+    }
+}
+@media (max-width: 1024px) {
+    .header{
+        margin: 0 20px;
+    }
+    .logo{
+        width: 180px;
+    }
+    .menu_item{
+        margin-right: 10px;
+        margin-left: 10px;
+    }
+}
+@media (max-width: 768px) {
     header{
         height: 150px;
         font-size: 22px;
@@ -159,8 +192,9 @@ header {
         /*margin-top: ;*/
     }
     .logo{
-        width: 100px;
-        padding-left: 10px;
+        width: 150px;
+        margin-left: 30px;
+        /*padding-left: 30px;*/
     }
     .header_menu{
         position: fixed;
@@ -288,7 +322,7 @@ header {
         width: 30px;
         height: 30px;
         cursor: pointer;
-        margin-right: 10px;
+        margin-right: 20px;
     }
     .header_burger span{
         position: absolute;

@@ -103,7 +103,7 @@ $(document).on('change', '#related_list input', function () {
             type = 'Камінцева';
         }
 
-        let sel = $(`.${this.id}`).removeClass('d-none');
+        let sel = $(`.${this.id}`).removeClass('d-none').empty();
         let relativeObject = findProductInJson(val);
         if (type) {
             relativeObject = relativeObject[type];
