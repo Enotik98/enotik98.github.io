@@ -298,8 +298,8 @@ $('.sub').click(function () {
             width: 100
         })
         $('#about').text(product['About'])
-        $('#product_img').empty().prepend(img)
         $('#quantity').text(packing)
+        $('#product_img').empty().prepend(img)
     } else {
         $('#about').empty()
         $('#product_img').empty()
