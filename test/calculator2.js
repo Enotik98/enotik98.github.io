@@ -3,14 +3,16 @@
 // })
 // $('.closeModal').click(function (event) {
 //     $('.menu__open').css('top', "-100%");
-$('.header_burger').click(function (){
+$('.header_burger').click(function () {
     $('.header_burger, .header_menu').toggleClass('active');
 })
-$('.pointer').click(function (){
+$('.pointer').click(function () {
     const target = $(this).data('target')
     $(`#${target}`).toggleClass('active')
 })
-$('.logo_span img').data('link', "https://poli-plast.ua/ua").click(function () {window.location = $(this).data('link')});
+$('.logo_span img').data('link', "https://poli-plast.ua/ua").click(function () {
+    window.location = $(this).data('link')
+});
 
 //start
 $('#Preparing, #Decorative').hide()
@@ -90,33 +92,33 @@ $(document).on('input', '#form_square input', function () {
 $('#related').on('change', function () {
     CreatedRelatedList()
 })
-$(document).on('change', '#related_list input', function () {
-    let val = this.value;
-    let type = null;
-    if (this.checked) {
-        if (val.includes('Короїд')) {
-            val = val.replace(/ 'Короїд'/, "");
-            type = 'Короїд';
-        }
-        if (this.value.includes('Камінцева')) {
-            val = val.replace(/ 'Камінцева'/, "");
-            type = 'Камінцева';
-        }
-
-        let sel = $(`.${this.id}`).removeClass('d-none').empty();
-        let relativeObject = findProductInJson(val);
-        if (type) {
-            relativeObject = relativeObject[type];
-        }
-        for (let key in relativeObject) {
-            if (key !== "Layers" && key !== "pre-packing" && key !== "Related_products") {
-                sel.append($('<option>').attr('value', key).text(optionVal(key)))
-            }
-        }
-    } else {
-        $(`.${this.id}`).addClass('d-none')
-    }
-})
+// $(document).on('change', '#related_list input', function () {
+//     let val = this.value;
+//     let type = null;
+//     if (this.checked) {
+//         if (val.includes('Короїд')) {
+//             val = val.replace(/ 'Короїд'/, "");
+//             type = 'Короїд';
+//         }
+//         if (this.value.includes('Камінцева')) {
+//             val = val.replace(/ 'Камінцева'/, "");
+//             type = 'Камінцева';
+//         }
+//
+//         let sel = $(`.${this.id}`).removeClass('d-none').empty();
+//         let relativeObject = findProductInJson(val);
+//         if (type) {
+//             relativeObject = relativeObject[type];
+//         }
+//         for (let key in relativeObject) {
+//             if (key !== "Layers" && key !== "pre-packing" && key !== "Related_products") {
+//                 sel.append($('<option>').attr('value', key).text(optionVal(key)))
+//             }
+//         }
+//     } else {
+//         $(`.${this.id}`).addClass('d-none')
+//     }
+// })
 
 //type without Decorative
 function optionVal(type) {
@@ -177,19 +179,20 @@ function CreatedRelatedList() {
         }
         $('#related_list').empty();
         for (let i = 0; i < relatedList.length; i++) {
-            $('#related_list').append(`<div class="row align-items-center"><div class="col-sm-6 r${i}" ></div>
-<div class="col-sm-6"><select name="${relatedList[i]}" id="${relatedList[i]}" class="form-select related${i} d-none"></select></select></div></div>`)
-
-            $(`.r${i}`).append($('<input>').prop({
-                type: 'checkbox',
-                class: 'form-check-input',
-                name: `related${i}`,
-                id: `related${i}`,
-                value: `${relatedList[i]}`
-            })).append($('<label></label>').prop({
-                for: `related${i}`,
-                class: 'ps-1 pb-2'
-            }).text(` ${relatedList[i]}`))
+            $('#related_list').append($('<li></li>').text(relatedList[i]))
+//             $('#related_list').append(`<div class="row align-items-center"><div class="col-sm-6 r${i}" ></div>
+// <div class="col-sm-6"><select name="${relatedList[i]}" id="${relatedList[i]}" class="form-select related${i} d-none"></select></select></div></div>`)
+//
+//             $(`.r${i}`).append($('<input>').prop({
+//                 type: 'checkbox',
+//                 class: 'form-check-input',
+//                 name: `related${i}`,
+//                 id: `related${i}`,
+//                 value: `${relatedList[i]}`
+//             })).append($('<label></label>').prop({
+//                 for: `related${i}`,
+//                 class: 'ps-1 pb-2'
+//             }).text(` ${relatedList[i]}`))
         }
     } else {
         $('#related_list').empty();
@@ -257,6 +260,7 @@ $('.sub').click(function () {
         } else {
             liter = (square * product['Layers']) / product[data['surface']];
         }
+
         $('#current').text(data['name']);
         $('#layers').text(product['Layers']);
     }
@@ -286,18 +290,41 @@ $('.sub').click(function () {
     //packing
     let packing = calculatePacking(product['pre-packing'], liter, measure);
 
+    if (data['name'] === 'Interior Classic') {
+
+        let img = $('<img />', {
+            id: 'MyImg',
+            src: `${product['IMG']}`,
+            width: 100
+        })
+        $('#about').text(product['About'])
+        $('#product_img').empty().prepend(img)
+    } else {
+        $('#about').empty()
+        $('#product_img').empty()
+        $('#quantity').text(packing)
+    }
+    // $('<img />', {
+    //     id: 'MyImg',
+    //     src: `${product['IMG']}`,
+    //     width: 50
+    // }).prepend($('#product_img'))
     $('.result-window').removeClass('d-none')
-    $('#result').text(liter.toFixed(1) + measure + ' або ' + packing);
+    // $('#result').text(liter.toFixed(1) + measure + ' або ' + packing);
+    $('#result').text(liter.toFixed(1) + measure);
     $('#resultSquare').text(square);
 
 
     //related
     if ($('#related').is(':checked')) {
         $('#related_result').empty();
-        let relatedArr = $("[id^=related]:not(#related):checked").map((_, el) => {
-            return $(el).val()
-        }).toArray();
+        let relatedArr = product['Related_products']
+        // console.log(relatedArr)
 
+        // let relatedArr = $("[id^=related]:not(#related):checked").map((_, el) => {
+        //     return $(el).val()
+        // }).toArray();
+        //
         for (let i = 0; i < relatedArr.length; i++) {
             let searchName = relatedArr[i];
             let type = null;
@@ -314,16 +341,22 @@ $('.sub').click(function () {
             if (type) {
                 relatedObject = relatedObject[type]
             }
-
+            // console.log(relatedObject)
+            let boolType = false;
+            let expense = calculateAverage(relatedObject, boolType);
+            if (Object.keys(relatedObject).includes('Fatness 0.5') || Object.keys(relatedObject).includes('Standard')) {
+                boolType = true;
+            }
+            // console.log(expense, boolType)
+            //
             let relatedLiter = 0;
-            let selectorType = data[key];
-            if (selectorType.includes('Structura') || selectorType.includes('Fatness') || key.includes('Décor') || selectorType.includes("Standard") || selectorType.includes("Strongly")) {
-                relatedLiter = (square * relatedObject['Layers']) * relatedObject[selectorType];
+            if (key.includes('Structura') || Object.keys(relatedObject).includes('Fatness 0.5') || key.includes('Décor') || Object.keys(relatedObject).includes('Standard')) {
+                relatedLiter = (square * relatedObject['Layers']) * expense;
             } else {
-                relatedLiter = (square * relatedObject['Layers']) / relatedObject[selectorType];
+                relatedLiter = (square * relatedObject['Layers']) / expense;
             }
             let relatedMeasure = "л";
-            if (selectorType.includes('Structura') || selectorType.includes('Fatness') || key.includes('Décor') || key.includes('Guartz')) {
+            if (key.includes('Structura') || Object.keys(relatedObject).includes('Fatness 0.5') || key.includes('Décor') || key.includes('Guartz')) {
                 relatedMeasure = "кг";
             }
             let relatedPacking = calculatePacking(relatedObject['pre-packing'], relatedLiter, relatedMeasure);
@@ -334,6 +367,20 @@ $('.sub').click(function () {
     }
 })
 
+function calculateAverage(obj, bool) {
+    let average = 0;
+    let size = 0;
+    for (let key in obj) {
+        if (key !== "pre-packing" && key !== "Layers" && key !== "Related_products" && key !== 'IMG' && key !== 'About') {
+            average += obj[key];
+            size++;
+        }
+        if (key.includes('Structura') || key.includes("Fatness")) {
+            bool = true;
+        }
+    }
+    return average / size;
+}
 
 //calculate packing
 function calculatePacking(pre_packing, liter, measure) {
