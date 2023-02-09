@@ -299,10 +299,10 @@ $('.sub').click(function () {
         })
         $('#about').text(product['About'])
         $('#product_img').empty().prepend(img)
+        $('#quantity').text(packing)
     } else {
         $('#about').empty()
         $('#product_img').empty()
-        $('#quantity').text(packing)
     }
     // $('<img />', {
     //     id: 'MyImg',
