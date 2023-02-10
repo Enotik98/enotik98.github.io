@@ -155,9 +155,9 @@ function optionVal(type) {
     return text
 }
 
-let relatedList = null;
 
 function CreatedRelatedList() {
+let relatedList = window.json;
     if ($('#related').is(':checked')) {
         let nameProduct = $("select[name='name']:visible").val();
         let typeProduct = $("select[name='type']:visible").val();
@@ -168,9 +168,9 @@ function CreatedRelatedList() {
             return;
         }
         if (btn !== 'Decorative') {
-            relatedList = window.json[btn][typeProduct][nameProduct]['Related_products'];
+            relatedList = relatedList[btn][typeProduct][nameProduct]['Related_products'];
         } else {
-            relatedList = window.json[btn][nameProduct][typeProduct]['Related_products'];
+            relatedList = relatedList[btn][nameProduct][typeProduct]['Related_products'];
         }
         if (!relatedList) {
             alert('Щось пішло не так');
@@ -201,8 +201,9 @@ function CreatedRelatedList() {
 }
 
 function findProductInJson(name) {
-    const fle = Object.assign(...Object.values(window.json))
-    let sle = Object.assign(...Object.values(fle))
+    const js = Object.assign({}, window.json)
+    const fle = Object.assign({}, ...Object.values(js))
+    let sle = Object.assign({}, ...Object.values(fle))
     sle = Object.assign({}, sle, fle);
     for (let key in sle) {
         if (key.includes(name)) {
@@ -290,34 +291,35 @@ $('.sub').click(function () {
     //packing
     let packing = calculatePacking(product['pre-packing'], liter, measure);
 
-    if (data['name'] === 'Interior Classic') {
-
-        let img = $('<img />', {
-            id: 'MyImg',
-            src: `${product['IMG']}`,
-            width: 100
-        })
-        $('#about').text(product['About'])
-        $('#quantity').text(packing)
-        $('#product_img').empty().prepend(img)
-    } else {
-        $('#about').empty()
-        $('#product_img').empty()
-    }
+    // if (data['name'] === 'Interior Classic') {
+    //
+    //     let img = $('<img />', {
+    //         id: 'MyImg',
+    //         src: `${product['IMG']}`,
+    //         width: 100
+    //     })
+    //     $('#about').text(product['About'])
+    //     $('#quantity').text(packing)
+    //     $('#product_img').empty().prepend(img)
+    // } else {
+    //     $('#about').empty()
+    //     $('#product_img').empty()
+    // }
     // $('<img />', {
     //     id: 'MyImg',
     //     src: `${product['IMG']}`,
     //     width: 50
     // }).prepend($('#product_img'))
     $('.result-window').removeClass('d-none')
-    // $('#result').text(liter.toFixed(1) + measure + ' або ' + packing);
-    $('#result').text(liter.toFixed(1) + measure);
+    $('#result').text(liter.toFixed(1) + measure + ' або ' + packing);
+    // $('#result').text(liter.toFixed(1) + measure);
     $('#resultSquare').text(square);
 
 
     //related
     if ($('#related').is(':checked')) {
         $('#related_result').empty();
+        $('#related_result_list').empty()
         let relatedArr = product['Related_products']
         // console.log(relatedArr)
 
@@ -360,8 +362,19 @@ $('.sub').click(function () {
                 relatedMeasure = "кг";
             }
             let relatedPacking = calculatePacking(relatedObject['pre-packing'], relatedLiter, relatedMeasure);
-            let related_result = $('<p></p>').text(key + ": " + relatedLiter.toFixed(1) + relatedMeasure + " або " + relatedPacking).addClass('ms-3');
-            $('#related_result').append(related_result);
+            // let related_result = $('<p></p>').text(key + ": " + relatedLiter.toFixed(1) + relatedMeasure + " або " + relatedPacking).addClass('ms-3');
+            $('#related_result_list').append(
+                $('<li>').append($('<strong>').text(key)).append(
+                    $('<p>').append(
+                        $('<img />', {
+                            src: `${relatedObject['IMG']}`,
+                            width: 100
+                        })).append(
+                            $('<strong>').text(relatedPacking)
+                    )
+                ))
+            // $(li_items).append($('<strong></strong>').text(key))
+            // $('#related_result').append(related_result);
         }
         $('.related_result').removeClass('d-none');
     }

@@ -148,6 +148,13 @@ header {
 .header_burger{
     display: none;
 }
+#related_list{
+    font-size: 13px;
+}
+#related_result_list{
+    list-style: none;
+
+}
 @media (max-width: 1370px) {
     .header{
         margin: 0 60px;
