@@ -155,6 +155,9 @@ header {
     list-style: none;
 
 }
+.related_about{
+    font-size: 12px;
+}
 @media (max-width: 1370px) {
     .header{
         margin: 0 60px;

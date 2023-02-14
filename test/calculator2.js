@@ -10,7 +10,7 @@ $('.pointer').click(function () {
     const target = $(this).data('target')
     $(`#${target}`).toggleClass('active')
 })
-$('.logo_span img').data('link', "https://poli-plast.ua/ua").click(function () {
+$('.logo_span img').data('link', "https://www.greenline.com.ua").click(function () {
     window.location = $(this).data('link')
 });
 
@@ -27,36 +27,32 @@ $('.Painting, .Preparing, .Decorative').click(function (e) {
     $('#related').prop('checked', false);
     $('#related_list').empty();
 })
-$('#p_name, #preparing_name, #decorative_type').on('change', function (e) {
+$('#p_name, #preparing_name, #decorative_type, #related').on('change', function () {
     CreatedRelatedList();
 });
 
 //input check square
-$('#square').on('input', checkInputSquare);
-$('.paramSquare').on('input', checkInputParamSquare)
-
-function checkInputSquare() {
+$('#square').on('input', function (){
     if (this.value.length) {
         $(this).removeClass('is-invalid').addClass('is-valid');
         $('.paramSquare').addClass('d-none').removeAttr('required');
-        $('.paramLabel').addClass('d-none');
+        $('.paramLabel, .or').addClass('d-none');
     } else {
         $(this).addClass('is-invalid');
         $('.paramSquare').removeClass('d-none').attr('required', true);
-        $('.paramLabel').removeClass('d-none');
+        $('.paramLabel, .or').removeClass('d-none');
     }
-}
-
-function checkInputParamSquare() {
+});
+$('.paramSquare').on('input', function (){
     if (this.value.length) {
         $('#square').addClass('d-none').removeAttr('required');
-        $('.squareLabel').addClass('d-none');
+        $('.squareLabel, .or').addClass('d-none');
     }
     if (!$('#width').val() && !$('#height').val() && !$('#length').val()) {
         $('#square').removeClass('d-none').attr('required', true);
-        $('.squareLabel').removeClass('d-none');
+        $('.squareLabel, .or').removeClass('d-none');
     }
-}
+})
 
 //input doors and windows
 $('#nDoor').on('change', function () {
@@ -79,6 +75,7 @@ $('#form_square input').on('input', function () {
     } else {
         $(this).addClass('is-invalid').removeClass('is-valid')
     }
+
 })
 $(document).on('input', '#form_square input', function () {
     if (this.value.length) {
@@ -88,76 +85,18 @@ $(document).on('input', '#form_square input', function () {
     }
 })
 
+$(document).on('change', 'select:visible', function (){
+    $('.result-window').addClass('d-none')
+}).on('input', 'input:visible', function (){
+    $('.result-window').addClass('d-none')
 
-$('#related').on('change', function () {
-    CreatedRelatedList()
 })
-// $(document).on('change', '#related_list input', function () {
-//     let val = this.value;
-//     let type = null;
-//     if (this.checked) {
-//         if (val.includes('Короїд')) {
-//             val = val.replace(/ 'Короїд'/, "");
-//             type = 'Короїд';
-//         }
-//         if (this.value.includes('Камінцева')) {
-//             val = val.replace(/ 'Камінцева'/, "");
-//             type = 'Камінцева';
-//         }
-//
-//         let sel = $(`.${this.id}`).removeClass('d-none').empty();
-//         let relativeObject = findProductInJson(val);
-//         if (type) {
-//             relativeObject = relativeObject[type];
-//         }
-//         for (let key in relativeObject) {
-//             if (key !== "Layers" && key !== "pre-packing" && key !== "Related_products") {
-//                 sel.append($('<option>').attr('value', key).text(optionVal(key)))
-//             }
-//         }
-//     } else {
-//         $(`.${this.id}`).addClass('d-none')
-//     }
+// $('#related').on('change', function () {
+//     CreatedRelatedList()
 // })
 
-//type without Decorative
-function optionVal(type) {
-    let text = null;
-    switch (type) {
-        case "Structured":
-            text = 'Структурні поверхні';
-            break;
-        case "Repainting":
-            text = "Перефарбування поверхні";
-            break;
-        case "Plasterer":
-            text = "Готові зашпакльовані поверхні";
-            break;
-        case "Fatness 0.5":
-            text = "0,5 mm";
-            break;
-        case "Fatness 1.5":
-            text = "1,5 mm";
-            break;
-        case "Fatness 3":
-            text = "3 mm";
-            break;
-        case "Standard":
-            text = "Стандарнті основи";
-            break;
-        case "Strongly":
-            text = "Сильно вбираючі основи";
-            break;
-        default:
-            text = type;
-            break;
-    }
-    return text
-}
-
-
 function CreatedRelatedList() {
-let relatedList = window.json;
+    let relatedList = window.json;
     if ($('#related').is(':checked')) {
         let nameProduct = $("select[name='name']:visible").val();
         let typeProduct = $("select[name='type']:visible").val();
@@ -180,19 +119,6 @@ let relatedList = window.json;
         $('#related_list').empty();
         for (let i = 0; i < relatedList.length; i++) {
             $('#related_list').append($('<li></li>').text(relatedList[i]))
-//             $('#related_list').append(`<div class="row align-items-center"><div class="col-sm-6 r${i}" ></div>
-// <div class="col-sm-6"><select name="${relatedList[i]}" id="${relatedList[i]}" class="form-select related${i} d-none"></select></select></div></div>`)
-//
-//             $(`.r${i}`).append($('<input>').prop({
-//                 type: 'checkbox',
-//                 class: 'form-check-input',
-//                 name: `related${i}`,
-//                 id: `related${i}`,
-//                 value: `${relatedList[i]}`
-//             })).append($('<label></label>').prop({
-//                 for: `related${i}`,
-//                 class: 'ps-1 pb-2'
-//             }).text(` ${relatedList[i]}`))
         }
     } else {
         $('#related_list').empty();
@@ -291,25 +217,7 @@ $('.sub').click(function () {
     //packing
     let packing = calculatePacking(product['pre-packing'], liter, measure);
 
-    // if (data['name'] === 'Interior Classic') {
-    //
-    //     let img = $('<img />', {
-    //         id: 'MyImg',
-    //         src: `${product['IMG']}`,
-    //         width: 100
-    //     })
-    //     $('#about').text(product['About'])
-    //     $('#quantity').text(packing)
-    //     $('#product_img').empty().prepend(img)
-    // } else {
-    //     $('#about').empty()
-    //     $('#product_img').empty()
-    // }
-    // $('<img />', {
-    //     id: 'MyImg',
-    //     src: `${product['IMG']}`,
-    //     width: 50
-    // }).prepend($('#product_img'))
+
     $('.result-window').removeClass('d-none')
     $('#result').text(liter.toFixed(1) + measure + ' або ' + packing);
     // $('#result').text(liter.toFixed(1) + measure);
@@ -364,17 +272,18 @@ $('.sub').click(function () {
             let relatedPacking = calculatePacking(relatedObject['pre-packing'], relatedLiter, relatedMeasure);
             // let related_result = $('<p></p>').text(key + ": " + relatedLiter.toFixed(1) + relatedMeasure + " або " + relatedPacking).addClass('ms-3');
             $('#related_result_list').append(
-                $('<li>').append($('<strong>').text(key)).append(
+                $('<li>').append(
+                    $('<strong>').text(key)).append(
                     $('<p>').append(
                         $('<img />', {
                             src: `${relatedObject['IMG']}`,
                             width: 100
                         })).append(
-                            $('<strong>').text(relatedPacking)
+                        $('<strong>').text(relatedPacking)
+                    ).append(
+                        $('<p>').text(relatedObject['About']).addClass('related_about')
                     )
                 ))
-            // $(li_items).append($('<strong></strong>').text(key))
-            // $('#related_result').append(related_result);
         }
         $('.related_result').removeClass('d-none');
     }
