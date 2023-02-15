@@ -1,8 +1,3 @@
-// $('.header__burger').click(function (event) {
-//     $('.menu__open').css('top', 0);
-// })
-// $('.closeModal').click(function (event) {
-//     $('.menu__open').css('top', "-100%");
 $('.header_burger').click(function () {
     $('.header_burger, .header_menu').toggleClass('active');
 })
@@ -31,7 +26,35 @@ $('.Painting, .Preparing, .Decorative').click(function (e) {
 $('#p_name, #preparing_name, #decorative_type, #related').on('change', function () {
     CreatedRelatedList();
 });
-
+function CreatedRelatedList() {
+    let relatedList = window.json;
+    $('#related_list').empty();
+    if ($('#related').is(':checked')) {
+        let nameProduct = $("select[name='name']:visible").val();
+        let typeProduct = $("select[name='type']:visible").val();
+        let btn = $("button.active").data('target');
+        if (!nameProduct) {
+            alert("Оберіть продукт");
+            $('#related').prop('checked', false);
+            return;
+        }
+        if (btn !== 'Decorative') {
+            relatedList = relatedList[btn][typeProduct][nameProduct]['Related_products'];
+        } else {
+            relatedList = relatedList[btn][nameProduct][typeProduct]['Related_products'];
+        }
+        if (!relatedList) {
+            alert('Щось пішло не так');
+            $('#related').prop('checked', false);
+            return;
+        }
+        for (let i = 0; i < relatedList.length; i++) {
+            $('#related_list').append($('<li></li>').text(relatedList[i]))
+        }
+    } else {
+        $('.related_result').addClass('d-none');
+    }
+}
 //input check square
 $('#square').on('input', function (){
     if (this.value.length) {
@@ -92,40 +115,6 @@ $(document).on('change', 'select:visible', function (){
     $('.result-window').addClass('d-none')
 
 })
-// $('#related').on('change', function () {
-//     CreatedRelatedList()
-// })
-
-function CreatedRelatedList() {
-    let relatedList = window.json;
-    if ($('#related').is(':checked')) {
-        let nameProduct = $("select[name='name']:visible").val();
-        let typeProduct = $("select[name='type']:visible").val();
-        let btn = $("button.active").data('target');
-        if (!nameProduct) {
-            alert("Оберіть продукт");
-            $('#related').prop('checked', false);
-            return;
-        }
-        if (btn !== 'Decorative') {
-            relatedList = relatedList[btn][typeProduct][nameProduct]['Related_products'];
-        } else {
-            relatedList = relatedList[btn][nameProduct][typeProduct]['Related_products'];
-        }
-        if (!relatedList) {
-            alert('Щось пішло не так');
-            $('#related').prop('checked', false);
-            return;
-        }
-        $('#related_list').empty();
-        for (let i = 0; i < relatedList.length; i++) {
-            $('#related_list').append($('<li></li>').text(relatedList[i]))
-        }
-    } else {
-        $('#related_list').empty();
-        $('.related_result').addClass('d-none');
-    }
-}
 
 function findProductInJson(name) {
     const js = Object.assign({}, window.json)
@@ -138,10 +127,62 @@ function findProductInJson(name) {
         }
     }
 }
+function calculateAverage(obj) {
+    let average = 0;
+    let size = 0;
+    for (let key in obj) {
+        if (key !== "pre-packing" && key !== "Layers" && key !== "Related_products" && key !== 'IMG' && key !== 'About') {
+            average += obj[key];
+            size++;
+        }
+    }
+    return average / size;
+}
+//calculate packing
+function calculatePacking(pre_packing, liter, measure) {
+    let quantity = 0
+    let result = '';
+    let packingMap = new Map();
+    for (let i = 0; i < pre_packing.length; i++) {
+        packingMap.set(pre_packing[i], 0);
+    }
+    packingMap = Object.fromEntries(packingMap);
+    for (let i = 0; i < pre_packing.length; i++) {
+        if (pre_packing.length !== 1) {
+            if (liter <= pre_packing[i]) {
+                packingMap[pre_packing[i]] += 1;
+                break;
+            } else {
+                if (i === pre_packing.length - 1) {
+                    quantity = Math.trunc(liter / pre_packing[i]);
+                    liter = liter - (quantity * pre_packing[i]);
+                    packingMap[pre_packing[i]] += quantity;
+                    if (liter !== 0) {
+                        i = -1;
+                    }
+                }
+            }
+        } else {
+            quantity = Math.trunc(liter / pre_packing[i]);
+            liter = liter - (quantity * pre_packing[i]);
+            if (liter !== 0) {
+                quantity++;
+            }
+            packingMap[pre_packing[i]] += quantity;
+            break;
+        }
+    }
+    for (let key in packingMap) {
+        if (packingMap[key] !== 0) {
+            result += " " + packingMap[key] + ' x ' + key + measure;
+        }
+    }
+    return result;
+}
 
 //submit and calculate
 $('.sub').click(function () {
-    //valid form
+    //valid forms
     let valid;
     $('#forms form:visible').each(function (_) {
         return valid = this.reportValidity();
@@ -150,7 +191,7 @@ $('.sub').click(function () {
         return
     }
 
-    //return object with data
+    //return object information from forms
     const forms = $('#forms form:visible')
     const data = Object.assign({}, ...$(forms).map((_, form) => {
         const formData = new FormData(form);
@@ -195,7 +236,6 @@ $('.sub').click(function () {
     }
     if ($('#Preparing').is(':visible')) {
         product = product['Preparing'][data['type']][data['name']];
-        // console.log(product)
         if ('Undercoat' !== data['type']) measure = 'кг';
         if ($('.layersSelect').is(':visible')) {
             liter = (square * product['Layers']) * product[data['preparing_layers']]
@@ -218,29 +258,20 @@ $('.sub').click(function () {
 
     //packing
     let packing = calculatePacking(product['pre-packing'], liter, measure);
-
-
     $('.result-window').removeClass('d-none')
     $('#result').text(liter.toFixed(1) + measure + ' або ' + packing);
-    // $('#result').text(liter.toFixed(1) + measure);
     $('#resultSquare').text(square);
 
-
-    //related
+    //related product
     if ($('#related').is(':checked')) {
-        $('#related_result').empty();
-        $('#related_result_list').empty()
+        $('#related_result, #related_result_list').empty();
         let relatedArr = product['Related_products']
-        // console.log(relatedArr)
 
-        // let relatedArr = $("[id^=related]:not(#related):checked").map((_, el) => {
-        //     return $(el).val()
-        // }).toArray();
-        //
         for (let i = 0; i < relatedArr.length; i++) {
             let searchName = relatedArr[i];
             let type = null;
             let key = relatedArr[i];
+            //product search
             if (key.includes('Короїд')) {
                 type = 'Короїд';
                 searchName = key.replace(/ 'Короїд'/, "");
@@ -253,14 +284,9 @@ $('.sub').click(function () {
             if (type) {
                 relatedObject = relatedObject[type]
             }
-            // console.log(relatedObject)
-            let boolType = false;
-            let expense = calculateAverage(relatedObject, boolType);
-            if (Object.keys(relatedObject).includes('Fatness 0.5') || Object.keys(relatedObject).includes('Standard')) {
-                boolType = true;
-            }
-            // console.log(expense, boolType)
-            //
+
+            let expense = calculateAverage(relatedObject);
+
             let relatedLiter = 0;
             if (key.includes('Structura') || Object.keys(relatedObject).includes('Fatness 0.5') || key.includes('Décor') || Object.keys(relatedObject).includes('Standard')) {
                 relatedLiter = (square * relatedObject['Layers']) * expense;
@@ -272,7 +298,8 @@ $('.sub').click(function () {
                 relatedMeasure = "кг";
             }
             let relatedPacking = calculatePacking(relatedObject['pre-packing'], relatedLiter, relatedMeasure);
-            // let related_result = $('<p></p>').text(key + ": " + relatedLiter.toFixed(1) + relatedMeasure + " або " + relatedPacking).addClass('ms-3');
+
+            //output
             $('#related_result_list').append(
                 $('<li>').append(
                     $('<strong>').text(key)).append(
@@ -289,66 +316,9 @@ $('.sub').click(function () {
         }
         $('.related_result').removeClass('d-none');
     }
+    //scroll focus
     $('html, body').animate({
         scrollTop: $('.result-window').offset().top
     }, 500);
 })
-
-function calculateAverage(obj, bool) {
-    let average = 0;
-    let size = 0;
-    for (let key in obj) {
-        if (key !== "pre-packing" && key !== "Layers" && key !== "Related_products" && key !== 'IMG' && key !== 'About') {
-            average += obj[key];
-            size++;
-        }
-        if (key.includes('Structura') || key.includes("Fatness")) {
-            bool = true;
-        }
-    }
-    return average / size;
-}
-
-//calculate packing
-function calculatePacking(pre_packing, liter, measure) {
-    let quantity = 0
-    let result = '';
-    let packingMap = new Map();
-    for (let i = 0; i < pre_packing.length; i++) {
-        packingMap.set(pre_packing[i], 0);
-    }
-    packingMap = Object.fromEntries(packingMap);
-    for (let i = 0; i < pre_packing.length; i++) {
-        if (pre_packing.length !== 1) {
-            if (liter <= pre_packing[i]) {
-                packingMap[pre_packing[i]] += 1;
-                break;
-            } else {
-                if (i === pre_packing.length - 1) {
-                    quantity = Math.trunc(liter / pre_packing[i]);
-                    liter = liter - (quantity * pre_packing[i]);
-                    packingMap[pre_packing[i]] += quantity;
-                    if (liter !== 0) {
-                        i = -1;
-                    }
-                }
-            }
-        } else {
-            quantity = Math.trunc(liter / pre_packing[i]);
-            liter = liter - (quantity * pre_packing[i]);
-            if (liter !== 0) {
-                quantity++;
-            }
-            packingMap[pre_packing[i]] += quantity;
-            break;
-        }
-    }
-    for (let key in packingMap) {
-        if (packingMap[key] !== 0) {
-            result += " " + packingMap[key] + ' x ' + key + measure;
-        }
-    }
-    return result;
-}
-
 
