@@ -81,7 +81,7 @@ header {
     margin-left: 20px;
 }
 .pointer{
-    /*display: none;*/
+    display: none;
     /*width: 50px;*/
     /*padding-left: 10px;*/
 }
