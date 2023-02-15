@@ -75,15 +75,13 @@ header {
     align-items: center;
     display: flex;
     justify-content: center;
-    /*font-weight: bold;*/
-    /*margin-right: 3em;*/
+
     margin-right: 70px;
     margin-left: 20px;
 }
 .pointer{
     display: none;
-    /*width: 50px;*/
-    /*padding-left: 10px;*/
+
 }
 .up{
     transform: rotate(180deg);
@@ -97,7 +95,6 @@ header {
     background-color: rgb(89, 89, 89);
     min-width: 300px;
 
-    /*visibility: hidden;*/
 }
 .header_item:hover, .menu_list li:hover{
     background-color: rgb(50, 50, 50);
@@ -216,7 +213,6 @@ header {
         background-color: #fff;
         transition: all 0.3s ease 0s;
         overflow-y: auto;
-        /*z-index: ;*/
     }
     .header_menu.active{
         top: 0;
@@ -227,14 +223,10 @@ header {
         position: relative;
         width: 100%;
         padding: 0 15px;
-        /*height: 100%;*/
         z-index: 1;
     }
     .header_list li{
-        /*list-style: ;*/
         display: block;
-        /*position: relative;*/
-        /*align-items: center;*/
     }
     .header_item:not(:last-child){
         border-right: none;
@@ -245,9 +237,6 @@ header {
         cursor: pointer;
         height: 55px;
         display: flex;
-        /*align-items: center;*/
-        /*display: flex;*/
-        /*justify-content: center;*/
         margin: 0;
     }
     .menu_item p {
@@ -267,9 +256,7 @@ header {
         justify-content: center;
         display: flex;
     }
-    /*li.active .menu_list{*/
-    /*    display: block;*/
-    /*}*/
+
     .menu_list.active {
         display: flex;
     }
