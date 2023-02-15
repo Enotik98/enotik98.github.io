@@ -2,9 +2,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="icon" sizes="192x192" href="https://static.wixstatic.com/media/984744_7712099b606d42898013bbb1870a2aae%7Emv2.png/v1/fill/w_32%2Ch_32%2Clg_1%2Cusm_0.66_1.00_0.01/984744_7712099b606d42898013bbb1870a2aae%7Emv2.png">
-    <link rel="shortcut icon" href="https://static.wixstatic.com/media/984744_7712099b606d42898013bbb1870a2aae%7Emv2.png/v1/fill/w_32%2Ch_32%2Clg_1%2Cusm_0.66_1.00_0.01/984744_7712099b606d42898013bbb1870a2aae%7Emv2.png" type="image/png">
-    <link rel="apple-touch-icon" href="https://static.wixstatic.com/media/984744_7712099b606d42898013bbb1870a2aae%7Emv2.png/v1/fill/w_32%2Ch_32%2Clg_1%2Cusm_0.66_1.00_0.01/984744_7712099b606d42898013bbb1870a2aae%7Emv2.png" type="image/png">
+    <link rel="icon" sizes="192x192"
+          href="https://static.wixstatic.com/media/984744_7712099b606d42898013bbb1870a2aae%7Emv2.png/v1/fill/w_32%2Ch_32%2Clg_1%2Cusm_0.66_1.00_0.01/984744_7712099b606d42898013bbb1870a2aae%7Emv2.png">
+    <link rel="shortcut icon"
+          href="https://static.wixstatic.com/media/984744_7712099b606d42898013bbb1870a2aae%7Emv2.png/v1/fill/w_32%2Ch_32%2Clg_1%2Cusm_0.66_1.00_0.01/984744_7712099b606d42898013bbb1870a2aae%7Emv2.png"
+          type="image/png">
+    <link rel="apple-touch-icon"
+          href="https://static.wixstatic.com/media/984744_7712099b606d42898013bbb1870a2aae%7Emv2.png/v1/fill/w_32%2Ch_32%2Clg_1%2Cusm_0.66_1.00_0.01/984744_7712099b606d42898013bbb1870a2aae%7Emv2.png"
+          type="image/png">
 
     <title>Калькулятор | GreenLine</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
@@ -47,7 +52,9 @@
                 <li class="header_item">
                     <div class="menu_item">
                         <div class="pointer" data-target="company">
-                            <i class="fa fa-chevron-down"></i>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 9.2828 4.89817" height="12" width="11">
+                                <path d="M4.64116,4.89817a.5001.5001,0,0,1-.34277-.13574L.15727.86448A.50018.50018,0,0,1,.84282.136L4.64116,3.71165,8.44.136a.50018.50018,0,0,1,.68555.72852L4.98393,4.76243A.5001.5001,0,0,1,4.64116,4.89817Z"></path>
+                            </svg>
                         </div>
                         <div class="text">
                             <p>Про компанію</p>
@@ -66,7 +73,9 @@
                 <li class="header_item">
                     <div class="menu_item">
                         <div class="pointer" data-target="products">
-                            <i class="fa fa-chevron-down"></i>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 9.2828 4.89817" height="12" width="11">
+                                <path d="M4.64116,4.89817a.5001.5001,0,0,1-.34277-.13574L.15727.86448A.50018.50018,0,0,1,.84282.136L4.64116,3.71165,8.44.136a.50018.50018,0,0,1,.68555.72852L4.98393,4.76243A.5001.5001,0,0,1,4.64116,4.89817Z"></path>
+                            </svg>
                         </div>
                         <div class="text">
                             <p>Продукція</p>
@@ -93,7 +102,9 @@
                 <li class="header_item">
                     <div class="menu_item">
                         <div class="pointer" data-target="service">
-                            <i class="fa fa-chevron-down"></i>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 9.2828 4.89817" height="12" width="11">
+                                <path d="M4.64116,4.89817a.5001.5001,0,0,1-.34277-.13574L.15727.86448A.50018.50018,0,0,1,.84282.136L4.64116,3.71165,8.44.136a.50018.50018,0,0,1,.68555.72852L4.98393,4.76243A.5001.5001,0,0,1,4.64116,4.89817Z"></path>
+                            </svg>
                         </div>
                         <div class="text">
                             <p>Сервіс</p>
@@ -169,21 +180,23 @@
         <form id="Painting" class="mb-3">
             <div class="row mb-3">
                 <div class="col">
-                    <label for="painting_type">Виберіть тип продукта</label>
+                    <label for="painting_type">Виберіть тип продукту</label>
                     <select name="type" id="painting_type" class="form-select valid" required>
-                        <option value="" disabled selected> - Оберіть -</option>
+                        <option value="" disabled selected> - Виберіть -</option>
                     </select>
                 </div>
             </div>
             <div class="row">
                 <div class="col-sm-6">
                     <label for="p_name">Виберіть продукт</label>
-                    <select name="name" id="p_name" class="form-select name" required></select>
+                    <select name="name" id="p_name" class="form-select name" required>
+                        <option value="" disabled selected> - Виберіть -</option>
+                    </select>
                 </div>
                 <div class="col-sm-6">
-                    <label for="painting_surface">Тип поверхні</label>
+                    <label for="painting_surface">Виберіть тип поверхні</label>
                     <select name="surface" id="painting_surface" class="form-select" required>
-                        <option value="" disabled>Оберіть тип поверхні</option>
+                        <option value="" disabled selected> - Виберіть -</option>
                     </select>
                 </div>
             </div>
@@ -191,9 +204,9 @@
         <form id="Preparing" class="mb-3">
             <div class="row mb-3 preparing_form form">
                 <div class="col">
-                    <label for="preparing_type">Тип</label>
+                    <label for="preparing_type">Виберіть тип продукту</label>
                     <select name="type" id="preparing_type" class="form-select preparingSelect" required>
-                        <option value="" disabled selected>Оберіть тип</option>
+                        <option value="" disabled selected> - Виберіть -</option>
                         <option value="Putty">Шпаклівка</option>
                         <option value="Soil paint">Ґрунт-фарба</option>
                         <option value="Undercoat">Ґрунтівка</option>
@@ -202,23 +215,25 @@
             </div>
             <div class="row">
                 <div class="col-sm-6">
-                    <label for="preparing_name">Продукт</label>
-                    <select name="name" id="preparing_name" class="form-select"></select>
+                    <label for="preparing_name">Виберіть продукт</label>
+                    <select name="name" id="preparing_name" class="form-select">
+                        <option value="" disabled selected> - Виберіть -</option>
+                    </select>
                 </div>
                 <div class="col-sm-6 form preparing_form">
                     <div class="layersSelect">
-                        <label for="preparing_layers">Товщина шару</label>
+                        <label for="preparing_layers">Виберіть товщину шару</label>
                         <select name="preparing_layers" id="preparing_layers" class="form-select preparingSelect">
-                            <option value="" disabled="disabled">--Оберіть--</option>
+                            <option value="" disabled selected> - Виберіть -</option>
                             <option value="Fatness 0.5">0,5 mm</option>
                             <option value="Fatness 1.5">1,5 mm</option>
                             <option value="Fatness 3">3 mm</option>
                         </select>
                     </div>
                     <div class="surfaceSelect d-none">
-                        <label for="preparing_surface">Тип Основи</label>
+                        <label for="preparing_surface">Виберіть тип основи</label>
                         <select name="preparing_surface" id="preparing_surface" class="form-select preparingSelect">
-                            <option value="" disabled="disabled">--Оберіть--</option>
+                            <option value="" disabled selected> - Виберіть -</option>
                             <option value="Standard">Стандартні основи</option>
                             <option value="Strongly">Сильно вбираючі основи</option>
                         </select>
@@ -231,19 +246,21 @@
                 <div class="col">
                     <label for="decorative_name">Виберіть продукт</label>
                     <select name="name" id="decorative_name" class="form-select decorativeSelect" required>
-                        <option value="" disabled selected>Оберіть продукт</option>
+                        <option value="" disabled selected> - Виберіть -</option>
                     </select>
                 </div>
             </div>
             <div id="decorative_param" class="row">
                 <div class="col-sm-6">
                     <label for="decorative_type">Виберіть тип</label>
-                    <select name="type" id="decorative_type" class="form-select decorativeSelect"></select>
+                    <select name="type" id="decorative_type" class="form-select decorativeSelect">
+                        <option value="" disabled selected> - Виберіть -</option>
+                    </select>
                 </div>
                 <div class="col-sm-6 decorative_form form">
-                    <label for="decorative_fraction">Фракція</label>
+                    <label for="decorative_fraction">Виберіть фракцію</label>
                     <select name="fraction" id="decorative_fraction" class="form-select decorativeSelect" required>
-                        <option value="" disabled="disabled">Оберіть фракцію</option>
+                        <option value="" disabled selected> - Виберіть -</option>
                     </select>
                 </div>
             </div>
@@ -251,27 +268,27 @@
         <form id="form_square" class="mb-3">
             <div class="row mb-3 ">
                 <div class="col ">
-                    <label for="square" class="squareLabel">Площа</label>
+                    <label for="square" class="squareLabel">Площа, м&sup2</label>
                     <input type="number" name="square" id="square" step="any" class="form-control  is-invalid" required>
                 </div>
             </div>
-            <div class="row or">
+            <div class="row or mb-3">
                 <div class="d-flex justify-content-center">Або</div>
             </div>
             <div class="row">
                 <div class="col-sm-4">
-                    <label for="width" class="paramLabel">Ширина кімнати</label>
+                    <label for="width" class="paramLabel">Ширина кімнати, м</label>
                     <input type="number" name="width" id="width" step="any" class="form-control paramSquare is-invalid"
                            required>
                 </div>
                 <div class="col-sm-4">
-                    <label for="height" class="paramLabel">Висота кімнати</label>
+                    <label for="height" class="paramLabel">Висота кімнати, м</label>
                     <input type="number" name="height" id="height" step="any"
                            class="form-control paramSquare is-invalid"
                            required>
                 </div>
                 <div class="col-sm-4">
-                    <label for="length" class="paramLabel">Довжина кімнати</label>
+                    <label for="length" class="paramLabel">Довжина кімнати, м</label>
                     <input type="number" name="length" id="length" step="any"
                            class="form-control paramSquare is-invalid"
                            required>
@@ -280,7 +297,7 @@
             <div class="row p-3">
                 <p class="text-center">Дверні отвори</p>
                 <select name="quantityDoor" id="nDoor" class="form-control">
-                    <option value="">Відсутні двері</option>
+                    <option value="" selected>Відсутні двері</option>
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
@@ -292,7 +309,7 @@
             <div class="row p-3">
                 <p class="text-center">Віконі отвори</p>
                 <select name="quantityWindow" id="nWindow" class="form-control">
-                    <option value="">Відсутні вікна</option>
+                    <option value="" selected>Відсутні вікна</option>
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
@@ -301,15 +318,15 @@
                 </select>
             </div>
             <div id="windowInput"></div>
-            <div class="row">
+            <div class="row mt-2">
                 <div class="col">
                     <label for="related">
                         <input type="checkbox" name="related" id="related" class="form-check-input">
-                        Чи потрібні допоміжні продукти
+                        Чи потрібні допоміжні продукти?
                     </label>
                 </div>
             </div>
-            <div class="" >
+            <div class="">
                 <ul id="related_list"></ul>
             </div>
         </form>
@@ -332,7 +349,6 @@
             <div class="related_result d-none">
                 <p>
                     <strong>Допоміжні продукти: </strong>
-<!--                    <strong id="related_result"></strong>-->
                 </p>
                 <ul id="related_result_list"></ul>
             </div>

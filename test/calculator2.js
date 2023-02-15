@@ -9,6 +9,7 @@ $('.header_burger').click(function () {
 $('.pointer').click(function () {
     const target = $(this).data('target')
     $(`#${target}`).toggleClass('active')
+    $(this).toggleClass('up')
 })
 $('.logo_span img').data('link', "https://www.greenline.com.ua").click(function () {
     window.location = $(this).data('link')
@@ -148,6 +149,7 @@ $('.sub').click(function () {
     if (!valid) {
         return
     }
+
     //return object with data
     const forms = $('#forms form:visible')
     const data = Object.assign({}, ...$(forms).map((_, form) => {
@@ -287,6 +289,9 @@ $('.sub').click(function () {
         }
         $('.related_result').removeClass('d-none');
     }
+    $('html, body').animate({
+        scrollTop: $('.result-window').offset().top
+    }, 500);
 })
 
 function calculateAverage(obj, bool) {

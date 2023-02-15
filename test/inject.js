@@ -82,7 +82,7 @@ $(document).on('change', '#decorative_type', function () {
     let fraction = jsonObject[$('#decorative_name').val()][this.value];
     decorative_fraction.length = 0;
     for (let key in fraction) {
-        if (key === 'pre-packing' || key === 'Related_products' || key === "Layers") continue;
+        if (key === 'pre-packing' || key === 'Related_products' || key === "Layers" || key === "IMG" || key === "About") continue;
         let opt = $("<option></option>").text(key);
         $('#decorative_fraction').append(opt);
     }

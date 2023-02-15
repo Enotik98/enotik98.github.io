@@ -81,7 +81,12 @@ header {
     margin-left: 20px;
 }
 .pointer{
-    display: none;
+    /*display: none;*/
+    /*width: 50px;*/
+    /*padding-left: 10px;*/
+}
+.up{
+    transform: rotate(180deg);
 }
 .menu_item p {
     margin: 0;
@@ -221,7 +226,7 @@ header {
         margin: 0;
         position: relative;
         width: 100%;
-        padding: 0 10px;
+        padding: 0 15px;
         /*height: 100%;*/
         z-index: 1;
     }
