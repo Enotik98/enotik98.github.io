@@ -1,0 +1,638 @@
+{
+  "Painting":{
+    "Інтер'єрні фарби": {
+      "Interior Classic": {
+        "pre-packing": [
+          1,
+          3,
+          5,
+          10
+        ],
+        "Structured": 8,
+        "Repainting": 9,
+        "Plasterer": 10,
+        "Layers": 2,
+        "Related_products": [
+          "Universal Grunt",
+          "Finish Puts",
+          "Grunt Ultra Sept"
+        ],
+        "IMG": "",
+        "About": ""
+      },
+      "Interior Optima": {
+        "pre-packing": [
+          1,
+          3,
+          5,
+          10
+        ],
+        "Structured": 8,
+        "Repainting": 9,
+        "Plasterer": 10,
+        "Layers": 2,
+        "Related_products": [
+          "Universal Grunt",
+          "Finish Puts",
+          "Grunt Ultra Sept"
+        ],
+        "IMG": "",
+        "About": ""
+      },
+      "Interior Professional": {
+        "pre-packing": [
+          1,
+          3,
+          5,
+          10
+        ],
+        "Structured": 8,
+        "Repainting": 9,
+        "Plasterer": 10,
+        "Layers": 2,
+        "Related_products": [
+          "Universal Grunt",
+          "Finish Puts",
+          "Grunt Ultra Sept"
+        ],
+        "IMG": "",
+        "About": ""
+      },
+      "Interior Latex": {
+        "pre-packing": [
+          1,
+          3,
+          5,
+          10
+        ],
+        "Structured": 8,
+        "Repainting": 9,
+        "Plasterer": 10,
+        "Layers": 2,
+        "Related_products": [
+          "Universal Grunt",
+          "Finish Puts",
+          "Grunt Ultra Sept"
+        ],
+        "IMG": "",
+        "About": ""
+      },
+      "Interior Batiste": {
+        "pre-packing": [
+          1,
+          3,
+          5,
+          10
+        ],
+        "Structured": 8,
+        "Repainting": 9,
+        "Plasterer": 10,
+        "Layers": 2,
+        "Related_products": [
+          "Universal Grunt",
+          "Finish Puts",
+          "Grunt Ultra Sept"
+        ],
+        "IMG": "https://static.wixstatic.com/media/984744_5c5131e899cd42cc826b8c8afab638bb~mv2.png/v1/fill/w_896,h_1000,al_c,usm_0.66_1.00_0.01/984744_5c5131e899cd42cc826b8c8afab638bb~mv2.png",
+        "About": "Латексна шовковисто-матова фарба модифікована силіконом з фунгіцидним комплексом та підвищеною стійкістю до інтенсивного миття."
+      },
+      "Interior Platinum" : {
+        "pre-packing": [
+          1,
+          3,
+          5,
+          10
+        ],
+        "Structured": 8,
+        "Repainting": 9,
+        "Plasterer": 10,
+        "Layers": 2,
+        "Related_products": [
+          "Universal Grunt",
+          "Finish Puts",
+          "Grunt Ultra Sept"
+        ],
+        "IMG": "",
+        "About": ""
+      }
+    },
+    "Фасадні фарби": {
+      "Fasad Classic": {
+        "pre-packing": [
+          1,
+          3,
+          5,
+          10
+        ],
+        "Structured": 7,
+        "Repainting": 8,
+        "Plasterer": 9,
+        "Layers": 2,
+        "Related_products": [
+          "Acril Guartz",
+          "Ultra Grunt",
+          "Grunt Ultra Sept"
+        ],
+        "IMG": "",
+        "About": ""
+      },
+      "Fasad Classic Plus": {
+        "pre-packing": [
+          1,
+          3,
+          5,
+          10
+        ],
+        "Structured": 7,
+        "Repainting": 8,
+        "Plasterer": 9,
+        "Layers": 2,
+        "Related_products": [
+          "Acril Guartz",
+          "Ultra Grunt",
+          "Grunt Ultra Sept"
+        ],
+        "IMG": "",
+        "About": ""
+      },
+      "Fasad Standard": {
+        "pre-packing": [
+          1,
+          3,
+          5,
+          10
+        ],
+        "Structured": 8,
+        "Repainting": 9,
+        "Plasterer": 10,
+        "Layers": 2,
+        "Related_products": [
+          "Acril Guartz",
+          "Ultra Grunt",
+          "Grunt Ultra Sept"
+        ],
+        "IMG": "",
+        "About": ""
+      },
+      "Fasad Platinum": {
+        "pre-packing": [
+          1,
+          3,
+          5,
+          10
+        ],
+        "Structured": 8,
+        "Repainting": 9,
+        "Plasterer": 10,
+        "Layers": 2,
+        "Related_products": [
+          "Silikon Grunt",
+          "Silk Guartz",
+          "Grunt Ultra Sept"
+        ],
+        "IMG": "",
+        "About": ""
+      },
+      "Fasad Premium": {
+        "pre-packing": [
+          1,
+          3,
+          5,
+          10
+        ],
+        "Structured": 8,
+        "Repainting": 9,
+        "Plasterer": 10,
+        "Layers": 2,
+        "Related_products": [
+          "Silikon Grunt",
+          "Silk Guartz",
+          "Grunt Ultra Sept"
+        ],
+        "IMG": "",
+        "About": ""
+      },
+      "Fasad Silicat": {
+        "pre-packing": [
+          1,
+          3,
+          5,
+          10
+        ],
+        "Structured": 8,
+        "Repainting": 9,
+        "Plasterer": 10,
+        "Layers": 2,
+        "Related_products": [
+          "Silikon Grunt",
+          "Silk Guartz",
+          "Grunt Ultra Sept"
+        ],
+        "IMG": "",
+        "About": ""
+      }
+    },
+    "Спеціальні фарби": {
+      "Universal Rubber Classic": {
+        "pre-packing": [
+          1,
+          3,
+          5,
+          10
+        ],
+        "Structured": 2.5 ,
+        "Repainting": 3.75,
+        "Plasterer": 5,
+        "Layers": 2,
+        "Related_products": [
+          "Universal Grunt",
+          "Finish Puts",
+          "Grunt Ultra Sept"
+        ],
+        "IMG": "https://static.wixstatic.com/media/984744_433632cd1da94f25aaa626e296e7051c~mv2.png/v1/fill/w_940,h_738,al_c,q_90,usm_0.66_1.00_0.01,enc_auto/984744_433632cd1da94f25aaa626e296e7051c~mv2.png",
+        "About": "Гумова акрилова фарба з антимікробною добавкою для захисту покриттів зовні та всередині приміщень від руйнуючої дії атмосферних впливів, вологи тощо."
+      },
+      "Universal Rubber Premium": {
+        "pre-packing": [
+          1,
+          3,
+          5,
+          10
+        ],
+        "Structured": 2.5,
+        "Repainting": 3.75,
+        "Plasterer": 5,
+        "Layers": 2,
+        "Related_products": [
+          "Universal Grunt",
+          "Finish Puts",
+          "Grunt Ultra Sept"
+        ],
+        "IMG": "",
+        "About": ""
+      }
+    },
+    "Структурні фарби": {
+      "Structura Interior": {
+        "pre-packing": [
+          15
+        ],
+        "Small": 0.6,
+        "Average": 0.9,
+        "Deep": 1.2,
+        "Layers": 1,
+        "Related_products": [
+          "Ultra Grunt",
+          "Finish Puts",
+          "Grunt Ultra Sept"
+        ],
+        "IMG": "https://static.wixstatic.com/media/984744_975edaae934c41948a001ed7fc82ce64~mv2.png/v1/fill/w_896,h_1000,al_c,usm_0.66_1.00_0.01/984744_975edaae934c41948a001ed7fc82ce64~mv2.png",
+        "About": "Структурна акрилова фарба для створення різноманітних декоративних ефектів всередині приміщень."
+      },
+      "Structura Classic": {
+        "pre-packing": [
+          16
+        ],
+        "Small": 0.6,
+        "Average": 0.9,
+        "Deep": 1.2,
+        "Layers": 1,
+        "Related_products": [
+          "Ultra Grunt",
+          "Finish Puts",
+          "Grunt Ultra Sept"
+        ],
+        "IMG": "",
+        "About": ""
+      },
+      "Structura Platinum": {
+        "pre-packing": [
+          16
+        ],
+        "Small": 0.6,
+        "Average": 0.9,
+        "Deep": 1.2,
+        "Layers": 1,
+        "Related_products": [
+          "Ultra Grunt",
+          "Finish Puts",
+          "Grunt Ultra Sept"
+        ],
+        "IMG": "",
+        "About": ""
+      }
+    }
+  },
+  "Preparing": {
+    "Putty": {
+      "Finish Puts": {
+        "pre-packing": [
+          1.4,
+          8,
+          16,
+          27
+        ],
+        "Fatness 0.5": 0.5,
+        "Fatness 1.5": 0.75,
+        "Fatness 3": 1,
+        "Layers": 1,
+        "Related_products": [
+          "Universal Grunt",
+          "Interior Batiste",
+          "Grunt Ultra Sept"
+        ],
+        "IMG": "https://static.wixstatic.com/media/984744_df3c05cff19d4037b5327f8bb8fa9dfe~mv2.png/v1/fill/w_896,h_1000,al_c,usm_0.66_1.00_0.01/984744_df3c05cff19d4037b5327f8bb8fa9dfe~mv2.png",
+        "About": "Фінішна акрилова шпаклівка для тонкошарового вирівнювання поверхні перед високоякісним фарбуванням та декоративним оздобленням."
+      }
+    },
+    "Soil paint": {
+      "Acril Guartz": {
+        "pre-packing": [
+          15
+        ],
+        "Standard": 0.3,
+        "Strongly": 0.5,
+        "Layers": 2,
+        "Related_products": [
+          "Universal Grunt",
+          "Grunt Ultra Sept",
+          "Décor Classic 'Короїд'"
+        ],
+        "IMG": "https://static.wixstatic.com/media/984744_f98943d1bda948c1bdb75708e9ee7dac~mv2.png/v1/fill/w_896,h_1000,al_c,usm_0.66_1.00_0.01/984744_f98943d1bda948c1bdb75708e9ee7dac~mv2.png",
+        "About": "Ґрунт-фарба для вирівнювання водопоглинання та збільшення адгезії декоративного покриття до основи та забезпечення рівномірного кольору світлим відтінкам декоративного оздоблення."
+      },
+      "Silk Guartz": {
+        "pre-packing": [
+          15
+          ],
+        "Standard": 0.3,
+        "Strongly": 0.5,
+        "Layers": 2,
+        "Related_products": [
+          "Universal Grunt",
+          "Grunt Ultra Sept",
+          "Décor Platinum 'Камінцева'"
+        ],
+        "IMG": "https://static.wixstatic.com/media/984744_2ad8b77ae1cd4db7894e74d8b25926bc~mv2.png/v1/fill/w_896,h_1000,al_c,usm_0.66_1.00_0.01/984744_2ad8b77ae1cd4db7894e74d8b25926bc~mv2.png",
+        "About": "Ґрунт-фарба для  зміцнення та підвищення адгезії поверхні основ перед нанесення декоративних штукатурок та структурних фарб на силіконовій та силікатній основах."
+      }
+    },
+    "Undercoat": {
+      "Universal Grunt": {
+        "pre-packing": [
+          5,
+          10
+        ],
+        "Standard": 0.1,
+        "Strongly": 0.1,
+        "Layers": 2,
+        "Related_products": [
+          "Finish Puts",
+          "Acril Guartz",
+          "Structura Interior"
+        ],
+        "IMG": "https://static.wixstatic.com/media/984744_0e3d74829a444e728fbba110d77a4358~mv2.png/v1/fill/w_896,h_1000,al_c,usm_0.66_1.00_0.01/984744_0e3d74829a444e728fbba110d77a4358~mv2.png",
+        "About": "Ґрунтовка для поверхневого закріплення, зниження водопоглинання та підвищення адгезії поверхні основи."
+      },
+      "Ultra Grunt": {
+        "pre-packing": [
+          5,
+          10
+        ],
+        "Standard": 0.1,
+        "Strongly": 0.1,
+        "Layers": 2,
+        "Related_products": [
+          "Finish Puts",
+          "Acril Guartz",
+          "Décor Professional 'Короїд'"
+        ],
+        "IMG": "https://static.wixstatic.com/media/984744_8a0c207859ad4a8495681cd065c4c7c8~mv2.png/v1/fill/w_896,h_1000,al_c,usm_0.66_1.00_0.01/984744_8a0c207859ad4a8495681cd065c4c7c8~mv2.png",
+        "About": "Ґрунтовка для глибокого просочення та укріплення неміцних пористих основ."
+      },
+      "Silikon Grunt": {
+        "pre-packing": [
+          5,
+          10
+        ],
+        "Standard": 0.5,
+        "Strongly": 0.12,
+        "Layers": 2,
+        "Related_products": [
+          "Finish Puts",
+          "Silk Guartz",
+          "Décor Platinum 'Камінцева'"
+        ],
+        "IMG": "https://static.wixstatic.com/media/984744_3c16fdc9d10443728f76ed716453c717~mv2.png/v1/fill/w_896,h_1000,al_c,usm_0.66_1.00_0.01/984744_3c16fdc9d10443728f76ed716453c717~mv2.png",
+        "About": "Силіконова ґрунтовка для глибокого просочення та укріплення неміцних пористих основ перед фарбуванням силіконовими фарбами."
+      },
+      "Grunt Ultra Sept": {
+        "pre-packing": [
+          2,
+          5
+        ],
+        "Standard": 0.1,
+        "Strongly": 0.2,
+        "Layers": 2,
+        "Related_products": [
+          "Universal Rubber Classic"
+        ],
+        "IMG": "https://static.wixstatic.com/media/984744_4f46dba5c6714c44aea3cbae4aa4f0f8~mv2.png/v1/fill/w_896,h_1000,al_c,usm_0.66_1.00_0.01/984744_4f46dba5c6714c44aea3cbae4aa4f0f8~mv2.png",
+        "About": "Антибактеріальний ґрунт глибокого проникнення для усунення плісняви,грибка, моху тощо."
+      }
+    }
+  },
+  "Decorative": {
+    "Décor Base": {
+      "Камінцева": {
+        "Фракція 1-1,5": 2.8,
+        "Фракція 1,5-2": 3.3,
+        "pre-packing": [
+          25
+        ],
+        "Related_products": [
+          "Acril Guartz",
+          "Ultra Grunt",
+          "Grunt Ultra Sept"
+        ],
+        "Layers": 1,
+        "IMG": "",
+        "About": ""
+      },
+      "Короїд": {
+        "Фракція 1-1,5": 2.5,
+        "Фракція 1,5-2": 2.9,
+        "pre-packing": [
+          25
+        ],
+        "Related_products": [
+          "Acril Guartz",
+          "Ultra Grunt",
+          "Grunt Ultra Sept"
+        ],
+        "Layers": 1,
+        "IMG": "",
+        "About": ""
+      }
+    },
+    "Décor Classic": {
+      "Камінцева": {
+        "Фракція 0,5-1": 2.3,
+        "Фракція 1-1,5": 2.8,
+        "Фракція 1,5-2": 3.3,
+        "Фракція 2-2,5": 3.8,
+        "pre-packing": [
+          25
+        ],
+        "Related_products": [
+          "Acril Guartz",
+          "Ultra Grunt",
+          "Grunt Ultra Sept"
+        ],
+        "Layers": 1,
+        "IMG": "",
+        "About": ""
+      },
+      "Короїд": {
+        "Фракція 1-1,5": 2.5,
+        "Фракція 1,5-2": 2.9,
+        "Фракція 2-2,5": 3.5,
+        "Фракція 2,5-3": 3.4,
+        "pre-packing": [
+          25
+        ],
+        "Related_products": [
+          "Acril Guartz",
+          "Ultra Grunt",
+          "Grunt Ultra Sept"
+        ],
+        "Layers": 1,
+        "IMG": "https://static.wixstatic.com/media/984744_15abfe33550a4e8b901c3b250727dc81~mv2.png/v1/fill/w_896,h_1000,al_c,usm_0.66_1.00_0.01/984744_15abfe33550a4e8b901c3b250727dc81~mv2.png",
+        "About": "Декоративна акрилова штукатурка для зовнішніх та внутрішніх робіт з фактурою «Короїд» стійка до атмосферних впливів та механічних пошкоджень."
+      }
+    },
+    "Décor Silk": {
+      "Камінцева": {
+        "Фракція 0,5-1": 2.3,
+        "Фракція 1-1,5": 2.8,
+        "Фракція 1,5-2": 3.3,
+        "Фракція 2-2,5": 3.8,
+        "pre-packing": [
+          25
+        ],
+        "Related_products": [
+          "Silikon Grunt",
+          "Silk Guartz",
+          "Grunt Ultra Sept"
+        ],
+        "Layers": 1,
+        "IMG": "",
+        "About": ""
+      },
+      "Короїд": {
+        "Фракція 1-1,5": 2.5,
+        "Фракція 1,5-2": 2.9,
+        "Фракція 2-2,5": 3.5,
+        "Фракція 2,5-3": 3.9,
+        "pre-packing": [
+          25
+        ],
+        "Related_products": [
+          "Acril Guartz",
+          "Ultra Grunt",
+          "Grunt Ultra Sept"
+        ],
+        "Layers": 1,
+        "IMG": "",
+        "About": ""
+      }
+    },
+    "Décor Platinum": {
+      "Камінцева": {
+        "Фракція 0,5-1": 2.3,
+        "Фракція 1-1,5": 2.8,
+        "Фракція 1,5-2": 3.3,
+        "Фракція 2-2,5": 3.8,
+        "pre-packing": [
+          25
+        ],
+        "Related_products": [
+          "Silikon Grunt",
+          "Silk Guartz",
+          "Grunt Ultra Sept"
+        ],
+        "Layers": 1,
+        "IMG": "https://static.wixstatic.com/media/984744_9a5b49d3cdd7458d8bc785031f7e09c3~mv2.png/v1/fill/w_896,h_1000,al_c,usm_0.66_1.00_0.01/984744_9a5b49d3cdd7458d8bc785031f7e09c3~mv2.png",
+        "About": "Декоративна силіконова штукатурка з фактурою «Камінцева» стійка до високих експлуатаційних навантажень, вигорання."
+      },
+      "Короїд": {
+        "Фракція 1-1,5": 2.5,
+        "Фракція 1,5-2": 2.9,
+        "Фракція 2-2,5": 3.5,
+        "Фракція 2,5-3": 3.9,
+        "pre-packing": [
+          25
+        ],
+        "Related_products": [
+          "Silikon Grunt",
+          "Silk Guartz",
+          "Grunt Ultra Sept"
+        ],
+        "Layers": 1,
+        "IMG": "",
+        "About": ""
+      }
+    },
+    "Décor Professional": {
+      "Камінцева": {
+        "Фракція 0,5-1": 2.3,
+        "Фракція 1-1,5": 2.8,
+        "Фракція 1,5-2": 3.3,
+        "Фракція 2-2,5": 3.8,
+        "pre-packing": [
+          25
+        ],
+        "Related_products": [
+          "Silikon Grunt",
+          "Silk Guartz",
+          "Grunt Ultra Sept"
+        ],
+        "Layers": 1,
+        "IMG": "",
+        "About": ""
+      },
+      "Короїд": {
+        "Фракція 1-1,5": 2.5,
+        "Фракція 1,5-2": 2.9,
+        "Фракція 2-2,5": 3.5,
+        "Фракція 2,5-3": 3.9,
+        "pre-packing": [
+          25
+        ],
+        "Related_products": [
+          "Silikon Grunt",
+          "Silk Guartz",
+          "Grunt Ultra Sept"
+        ],
+        "Layers": 1,
+        "IMG": "https://static.wixstatic.com/media/984744_e3a2738587314398aa307b4f40d805ce~mv2.png/v1/fill/w_896,h_1000,al_c,usm_0.66_1.00_0.01/984744_e3a2738587314398aa307b4f40d805ce~mv2.png",
+        "About": "Декоративна силіконова штукатурка з фактурою «Короїд» стійка до атмосферних впливів, мікробіологічних забруднень та механічних пошкоджень "
+      }
+    },
+    "Décor Mosaic": {
+      "Камінцева": {
+        "Фракція 0,5-1": 3.6,
+        "pre-packing": [
+          16
+        ],
+        "Related_products": [
+          "Ultra Grunt",
+          "Grunt Ultra Sept"
+        ],
+        "Layers": 1,
+        "IMG": "",
+        "About": ""
+      }
+    }
+  }
+}
