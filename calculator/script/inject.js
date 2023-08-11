@@ -9,7 +9,7 @@ jQuery.fn.applyClass = function(className,apply){
 
 let jsonObject;
 
-fetch('./products.json')
+fetch('script/products.json')
     .then(res => res.json())
     .then(json => {
         window.json = json;
@@ -57,6 +57,14 @@ fetch('./products.json')
             $('#preparing_name').trigger('change')
 
         })
+        $('#microcement_component').change(function (){
+            let listName = json['Microcement'][this.value];
+            for (let key in listName){
+                let opt = $("<option></option>").text(key);
+                $('#microcement_name').append(opt);
+            }
+            console.log(listName)
+        })
 
         jsonObject = json['Decorative'];
         for (let key in jsonObject){
@@ -87,3 +95,4 @@ $(document).on('change', '#decorative_type', function () {
         $('#decorative_fraction').append(opt);
     }
 })
+

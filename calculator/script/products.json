@@ -634,5 +634,111 @@
         "About": ""
       }
     }
+  },
+  "Microcement": {
+    "One-component": {
+      "Aquamarine": {
+        "pre-packing": [
+          1,
+          5,
+          10
+        ],
+        "Layers": 1,
+        "Consumption": 0.15
+      },
+      "Adamant": {
+        "pre-packing": [20],
+        "Layers": 2,
+        "Consumption": 0.7
+      },
+      "Ruby": {
+        "pre-packing": [15],
+        "Layers": 2,
+        "Consumption": 0.5
+      },
+      "Garnet": {
+        "pre-packing": [
+          1,
+          5,
+          10
+        ],
+        "Layers": 1,
+        "Consumption": 0.15
+      },
+      "Amber": {
+        "pre-packing": [
+          1,
+          5
+        ],
+        "Layers": 2,
+        "Consumption": 0.15
+      },
+      "Artcem Multi Color": {
+        "pre-packing": [0,2],
+        "Layers": 1,
+        "Consumption": 0.2
+      },
+      "Opal": {
+        "pre-packing": [
+          1,
+          5,
+          10
+        ],
+        "Layers": 1,
+        "Consumption": 0.15
+      }
+    },
+    "Two-component": {
+      "Aquamarine": {
+        "pre-packing": [
+          1,
+          5,
+          10
+        ],
+        "Layers": 1,
+        "Consumption": 0.15
+      },
+      "Emerald": {
+        "pre-packing": [25],
+        "Layers": 2,
+        "Consumption": 0.7
+      },
+      "Topaz": {
+        "pre-packing": [20],
+        "Layers": 2,
+        "Consumption": 0.5
+      },
+      "Garnet": {
+        "pre-packing": [
+          1,
+          5,
+          10
+        ],
+        "Layers": 1,
+        "Consumption": 0.15
+      },
+      "Crystal": {
+        "pre-packing": [
+          1,
+          5
+        ],
+        "Layers": 2,
+        "Consumption": 0.15
+      },
+      "Artcem Multi Color": {
+        "pre-packing": [0,2],
+        "Layers": 1,
+        "Consumption": 0.2
+      },
+      "Opal": {
+        "pre-packing": [
+          1,
+          5,
+          10
+        ],
+        "Layers": 1,
+        "Consumption": 0.15
+      }
+    }
   }
 }

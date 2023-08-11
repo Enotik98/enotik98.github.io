@@ -11,13 +11,13 @@ $('.logo_span img').data('link', "https://www.greenline.com.ua").click(function 
 });
 
 //start
-$('#Preparing, #Decorative').hide()
-$('.Painting, .Preparing, .Decorative').click(function (e) {
+$('#Preparing, #Decorative, #Microcement').hide()
+$('.Painting, .Preparing, .Decorative, .Microcement').click(function (e) {
     e.preventDefault();
     $('.form-param').removeClass('active');
     $(this).addClass('active');
     const target = $(this).data('target');
-    $('#Painting, #Preparing, #Decorative').hide();
+    $('#Painting, #Preparing, #Decorative, #Microcement').hide();
     $(`#${target}`).show();
     $('.result-window').addClass('d-none');
     $('#related').prop('checked', false);
@@ -199,6 +199,7 @@ $('.sub').click(function () {
     }))
     $('#note').addClass('d-none');
 
+    console.log(data)
     //calculate square
     let square = 0;
     if (data['square']) {
@@ -255,6 +256,14 @@ $('.sub').click(function () {
         $('#current').text(data['name']);
         $('#layers').text(product['Layers']);
     }
+    if ($('#Microcement').is(':visible')){
+        product = product['Microcement'][data['component']][data['name']];
+        liter = square * product['Consumption'];
+        measure = 'кг';
+        $('#current').text(data['name']);
+        $('#layers').text(product['Layers']);
+        console.log(product)
+    }
 
     //packing
     let packing = calculatePacking(product['pre-packing'], liter, measure);
@@ -284,6 +293,7 @@ $('.sub').click(function () {
             if (type) {
                 relatedObject = relatedObject[type]
             }
+            console.log(relatedObject)
 
             let expense = calculateAverage(relatedObject);
 
