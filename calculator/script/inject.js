@@ -59,6 +59,7 @@ fetch('script/products.json')
         })
         $('#microcement_component').change(function (){
             let listName = json['Microcement'][this.value];
+            microcement_name.length = 0;
             for (let key in listName){
                 let opt = $("<option></option>").text(key);
                 $('#microcement_name').append(opt);
